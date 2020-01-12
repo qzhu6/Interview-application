@@ -1,4 +1,4 @@
-package com.bfs.authserver;
+package com.bfs.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

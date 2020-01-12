@@ -1,4 +1,4 @@
-package com.bfs.authserver.domain;
+package com.bfs.backend.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

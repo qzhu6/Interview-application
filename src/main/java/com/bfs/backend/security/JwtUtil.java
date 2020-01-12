@@ -1,4 +1,4 @@
-package com.bfs.authserver.security;
+package com.bfs.backend.security;
 
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;

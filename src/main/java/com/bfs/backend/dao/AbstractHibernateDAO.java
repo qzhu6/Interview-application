@@ -1,6 +1,6 @@
-package com.bfs.authserver.dao;
+package com.bfs.backend.dao;
 
-import com.bfs.authserver.domain.User1;
+import com.bfs.backend.domain.User1;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 

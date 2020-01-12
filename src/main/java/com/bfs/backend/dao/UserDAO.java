@@ -1,9 +1,7 @@
-package com.bfs.authserver.dao;
+package com.bfs.backend.dao;
 
 
-import com.bfs.authserver.domain.User1;
-
-import java.util.List;
+import com.bfs.backend.domain.User1;
 
 public interface UserDAO {
     User1 getUserByNameOrEmail(String str, String nameOrEmail);

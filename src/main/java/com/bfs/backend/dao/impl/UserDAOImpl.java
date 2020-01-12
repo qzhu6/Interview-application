@@ -1,12 +1,10 @@
-package com.bfs.authserver.dao.impl;
+package com.bfs.backend.dao.impl;
 
 
-import com.bfs.authserver.dao.AbstractHibernateDAO;
-import com.bfs.authserver.dao.UserDAO;
-import com.bfs.authserver.domain.User1;
+import com.bfs.backend.dao.AbstractHibernateDAO;
+import com.bfs.backend.dao.UserDAO;
+import com.bfs.backend.domain.User1;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class UserDAOImpl  extends AbstractHibernateDAO implements UserDAO {

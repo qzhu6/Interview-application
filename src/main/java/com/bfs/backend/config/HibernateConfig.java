@@ -1,4 +1,4 @@
-package com.bfs.authserver.config;
+package com.bfs.backend.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
@@ -16,8 +16,8 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")
 @ComponentScans(value = {
-        @ComponentScan("com.bfs.authserver.service"),
-        @ComponentScan("com.bfs.authserver.dao")
+        @ComponentScan("com.bfs.backend.service"),
+        @ComponentScan("com.bfs.backend.dao")
 })
 
 public class HibernateConfig {
@@ -29,7 +29,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.bfs.authserver.domain");
+        sessionFactory.setPackagesToScan("com.bfs.backend.domain");
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;

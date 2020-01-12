@@ -1,4 +1,4 @@
-package com.bfs.authserver.security;
+package com.bfs.backend.security;
 
 import org.springframework.web.util.WebUtils;
 

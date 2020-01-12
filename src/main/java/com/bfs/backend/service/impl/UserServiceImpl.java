@@ -1,13 +1,11 @@
-package com.bfs.authserver.service.impl;
+package com.bfs.backend.service.impl;
 
-import com.bfs.authserver.dao.UserDAO;
-import com.bfs.authserver.domain.User1;
-import com.bfs.authserver.service.UserService;
+import com.bfs.backend.dao.UserDAO;
+import com.bfs.backend.domain.User1;
+import com.bfs.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {

@@ -1,4 +1,4 @@
-package com.bfs.authserver;
+package com.bfs.backend;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

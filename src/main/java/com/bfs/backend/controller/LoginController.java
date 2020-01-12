@@ -1,9 +1,9 @@
-package com.bfs.authserver.controller;
+package com.bfs.backend.controller;
 
-import com.bfs.authserver.domain.User1;
-import com.bfs.authserver.security.CookieUtil;
-import com.bfs.authserver.security.JwtUtil;
-import com.bfs.authserver.service.UserService;
+import com.bfs.backend.domain.User1;
+import com.bfs.backend.security.CookieUtil;
+import com.bfs.backend.security.JwtUtil;
+import com.bfs.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 public class LoginController {
