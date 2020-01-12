@@ -2,22 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36e1638f-e3b3-4470-89ca-efd505a787c2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/domain/InternalPersonnel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/AuthServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/AuthServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/ServletInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/ServletInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/config/HibernateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/config/HibernateConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/dao/AbstractHibernateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/dao/AbstractHibernateDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/dao/impl/UserDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/dao/impl/UserDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/domain/User1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/domain/User1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/security/CookieUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/security/CookieUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/security/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/security/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfs/back-end/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfs/backend/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bfs/authserver/AuthServerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bfs/backend/AuthServerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/auth-server.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/AuthServerApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/ServletInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/config/HibernateConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/dao/AbstractHibernateDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/dao/UserDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/dao/impl/UserDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/domain/User1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/security/CookieUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/security/JwtUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bfs/authserver/service/impl/UserServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/bfs/authserver/AuthServerApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +57,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
@@ -156,7 +157,7 @@
       <workItem from="1578799153078" duration="1176000" />
       <workItem from="1578806409429" duration="140000" />
       <workItem from="1578806650876" duration="404000" />
-      <workItem from="1578858378091" duration="2240000" />
+      <workItem from="1578858378091" duration="4618000" />
     </task>
     <task id="LOCAL-00001" summary="Start project">
       <created>1578806752622</created>
@@ -172,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578858422433</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Start project">
+      <created>1578860650666</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1578860650666</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,13 +188,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Start project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start project" />
+    <MESSAGE value="atart hibernate" />
+    <option name="LAST_COMMIT_MESSAGE" value="atart hibernate" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1578799531003">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#Notifications/0.0.1280.680@0.0.1280.680" timestamp="1578799531003" />
+    <state x="552" y="179" key="#Project_Structure" timestamp="1578863905639">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="179" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1578863905639" />
     <state x="188" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578860083536">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -200,11 +213,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="400" y="124" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1578186825974" />
-    <state x="260" y="0" key="CommitChangelistDialog2" timestamp="1578858421631">
+    <state x="260" y="0" key="CommitChangelistDialog2" timestamp="1578860693345">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="173" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578806750962" />
-    <state x="260" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578858421631" />
+    <state x="260" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1578860693345" />
     <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1578806276841">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -294,10 +307,10 @@
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1578806207760" />
     <state x="213" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1578859175833" />
-    <state x="552" y="250" key="Vcs.Push.Dialog.v2" timestamp="1578858428567">
+    <state x="552" y="250" key="Vcs.Push.Dialog.v2" timestamp="1578860703501">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="250" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578858428567" />
+    <state x="552" y="250" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1578860703501" />
     <state x="337" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1578806652390">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
