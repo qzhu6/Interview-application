@@ -19,6 +19,8 @@ public class AuthServerApplication {
         UserInternalPersonnel userInternalPersonnel= userInternalPersonnelService.getUserTest();
         System.out.println(userInternalPersonnel.getFirstName());
         System.out.println(userInternalPersonnel.getUserName());
+        System.out.println(userInternalPersonnel.getRoleName());
+        System.out.println(userInternalPersonnel.getDescription());
     }
 
 }

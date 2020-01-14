@@ -1,9 +1,6 @@
 package com.bfs.backend.dao;
 
-import com.bfs.backend.domain.InternalPersonnel;
-import com.bfs.backend.domain.User;
-import com.bfs.backend.domain.User1;
-import com.bfs.backend.domain.UserInternalPersonnel;
+import com.bfs.backend.domain.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -48,10 +45,18 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         CriteriaQuery<UserInternalPersonnel> cq = cb.createQuery(UserInternalPersonnel.class);
         Root<InternalPersonnel> iRoot = cq.from(InternalPersonnel.class);
         Root<User> uRoot = cq.from(User.class);
+        Root<Role> rRoot = cq.from(Role.class);
+        Root<Permission> pRoot = cq.from(Permission.class);
+        Root<UserRole> urRoot = cq.from(UserRole.class);
+        Root<RolePermission> rpRoot = cq.from(RolePermission.class);
         cq.multiselect(
                 iRoot.get("FirstName"),
-                uRoot.get("UserName"));
+                uRoot.get("UserName"),
+                rRoot.get("RoleName"),
+                pRoot.get("Description"));
         cq.where(cb.equal(iRoot.get("ID"), uRoot.get("InternalPersonnelID")));
+        cq.where(cb.equal(uRoot.get("ID"), urRoot.get("UserID")));
+        cq.where(cb.equal(rRoot.get("ID"), urRoot.get("RoleID")));
         List<UserInternalPersonnel> list = session.createQuery(cq).getResultList();
         userInternalPersonnel = list.get(0);
         return userInternalPersonnel;
