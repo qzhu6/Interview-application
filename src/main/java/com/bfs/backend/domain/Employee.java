@@ -46,7 +46,7 @@ public class Employee implements Serializable{
     @Column(name="ModifyDate")
     private Date ModifyDate;
 
-    @Column(name="CreateUser")
-
-    @Column(name="ModifyUser")
+//    @Column(name="CreateUser")
+//
+//    @Column(name="ModifyUser")
 }
