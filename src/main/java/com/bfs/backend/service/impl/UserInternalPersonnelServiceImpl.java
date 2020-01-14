@@ -1,6 +1,7 @@
 package com.bfs.backend.service.impl;
 
 import com.bfs.backend.dao.UserInternalPersonnelDAO;
+import com.bfs.backend.domain.RecruitingTesting;
 import com.bfs.backend.domain.UserInternalPersonnel;
 import com.bfs.backend.service.UserInternalPersonnelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,11 @@ public class UserInternalPersonnelServiceImpl implements UserInternalPersonnelSe
     @Override
     public UserInternalPersonnel getUserTest(){
         return userInternalPersonnelDao.getTest();
+    }
+
+    @Transactional
+    @Override
+    public RecruitingTesting getRecruiting(){
+        return userInternalPersonnelDao.getTestRecruiting();
     }
 }

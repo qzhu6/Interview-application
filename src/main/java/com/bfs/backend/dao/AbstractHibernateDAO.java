@@ -46,9 +46,9 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         return user;
     }
 
-    public void testSomeCandidate() throws ParseException {
-        String sDate1="12/01/2020 21:03:04";
-        Date date1=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sDate1);
+    public UserInternalPersonnel testSomeCandidate(){
+//        String sDate1="12/01/2020 21:03:04";
+//        Date date1=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sDate1);
         Session session = getCurrentSession();
 
         UserInternalPersonnel userInternalPersonnel = null;
@@ -68,9 +68,38 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         cq.where(cb.equal(iRoot.get("ID"), uRoot.get("InternalPersonnelID")));
         cq.where(cb.equal(uRoot.get("ID"), urRoot.get("UserID")));
         cq.where(cb.equal(rRoot.get("ID"), urRoot.get("RoleID")));
+        cq.where(cb.equal(rRoot.get("ID"), rpRoot.get("RoleID")));
+        cq.where(cb.equal(pRoot.get("ID"),rpRoot.get("PermissionID")));
         List<UserInternalPersonnel> list = session.createQuery(cq).getResultList();
         userInternalPersonnel = list.get(0);
         return userInternalPersonnel;
+    }
+
+    public RecruitingTesting testRecruiting(){
+        Session session = getCurrentSession();
+
+        RecruitingTesting recruitingTesting = null;
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<RecruitingTesting> cq = cb.createQuery(RecruitingTesting.class);
+        Root<Position> pRoot = cq.from(Position.class);
+        Root<SendStatus> sRoot = cq.from(SendStatus.class);
+        Root<EmailTemplate> eRoot = cq.from(EmailTemplate.class);
+        Root<PotentialCandidate> pcRoot = cq.from(PotentialCandidate.class);
+        Root<InterviewType> iRoot = cq.from(InterviewType.class);
+        Root<CandidateInterview> cRoot = cq.from(CandidateInterview.class);
+        cq.multiselect(
+                pRoot.get("PositionName"),
+                sRoot.get("Description"),
+                eRoot.get("EmailSubject"),
+                pcRoot.get("Email"),
+                iRoot.get("InterviewTypeDescription"));
+        cq.where(cb.equal(pRoot.get("ID"),iRoot.get("PositionID")));
+        cq.where(cb.equal(pcRoot.get("ID"),cRoot.get("PotentialCandidateID")));
+        cq.where(cb.equal(iRoot.get("ID"), cRoot.get("InterviewTypeID")));
+        cq.where(cb.equal(sRoot.get("ID"), pcRoot.get("PositionID")));
+        List<RecruitingTesting> list = session.createQuery(cq).getResultList();
+        recruitingTesting = list.get(0);
+        return recruitingTesting;
     }
 
 //

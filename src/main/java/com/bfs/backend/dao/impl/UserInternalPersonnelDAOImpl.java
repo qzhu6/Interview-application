@@ -2,6 +2,7 @@ package com.bfs.backend.dao.impl;
 
 import com.bfs.backend.dao.AbstractHibernateDAO;
 import com.bfs.backend.dao.UserInternalPersonnelDAO;
+import com.bfs.backend.domain.RecruitingTesting;
 import com.bfs.backend.domain.UserInternalPersonnel;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,11 @@ public class UserInternalPersonnelDAOImpl extends AbstractHibernateDAO implement
 
     @Override
     public UserInternalPersonnel getTest(){
-        return getSomething();
+        return testSomeCandidate();
+    }
+
+    @Override
+    public RecruitingTesting getTestRecruiting(){
+        return testRecruiting();
     }
 }

@@ -2,10 +2,11 @@ package com.bfs.backend;
 
 
 import com.bfs.backend.dao.CandidateDAO;
+import com.bfs.backend.domain.RecruitingTesting;
 import com.bfs.backend.service.UserService;
 import com.bfs.backend.config.HibernateConfig;
-//import com.bfs.backend.domain.UserInternalPersonnel;
-//import com.bfs.backend.service.UserInternalPersonnelService;
+import com.bfs.backend.domain.UserInternalPersonnel;
+import com.bfs.backend.service.UserInternalPersonnelService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -31,6 +32,13 @@ public class AuthServerApplication {
         System.out.println(userInternalPersonnel.getUserName());
         System.out.println(userInternalPersonnel.getRoleName());
         System.out.println(userInternalPersonnel.getDescription());
+
+        RecruitingTesting recruitingTesting = userInternalPersonnelService.getRecruiting();
+        System.out.println(recruitingTesting.getPositionName());
+        System.out.println(recruitingTesting.getInterviewTypeDescription());
+        System.out.println(recruitingTesting.getEmailSubject());
+        System.out.println(recruitingTesting.getEmail());
+        System.out.println(recruitingTesting.getSendDescription());
 
     }
 

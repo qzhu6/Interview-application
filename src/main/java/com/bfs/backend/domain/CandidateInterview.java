@@ -27,7 +27,7 @@ public class CandidateInterview implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name="PotentialCandidateID")
+    @JoinColumn(name="PotentialCandidateID",insertable=false, updatable=false)
     private PotentialCandidate potentialCandidate;
     public PotentialCandidate getPotentialCandidate() {
         return potentialCandidate;
@@ -37,7 +37,7 @@ public class CandidateInterview implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name="InterviewTypeID")
+    @JoinColumn(name="InterviewTypeID",insertable=false, updatable=false)
     private InterviewType interviewType;
     public InterviewType getInterviewType() {
         return interviewType;
@@ -47,13 +47,46 @@ public class CandidateInterview implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name="InterviewEmplID")
+    @JoinColumn(name="InterviewEmplID",insertable=false, updatable=false)
     private Employee employee;
     public Employee getInterviewEmplID() {
         return employee;
     }
     public void setInterviewEmplID(Employee employee) {
         this.employee = employee;
+    }
+
+    @Column(name="PotentialCandidateID")
+    private int PotentialCandidateID;
+
+    public int getPotentialCandidateID() {
+        return PotentialCandidateID;
+    }
+
+    public void setPotentialCandidateID(int potentialCandidateID) {
+        PotentialCandidateID = potentialCandidateID;
+    }
+
+    @Column(name="InterviewTypeID")
+    private int InterviewTypeID;
+
+    public int getInterviewTypeID() {
+        return InterviewTypeID;
+    }
+
+    public void setInterviewTypeID(int interviewTypeID) {
+        InterviewTypeID = interviewTypeID;
+    }
+
+    @Column(name="InterviewerEmplID")
+    private int InteviewerEmplID;
+
+    public int getInteviewerEmplID() {
+        return InteviewerEmplID;
+    }
+
+    public void setInteviewerEmplID(int inteviewerEmplID) {
+        InteviewerEmplID = inteviewerEmplID;
     }
 
     @Column(name="OverallRating")

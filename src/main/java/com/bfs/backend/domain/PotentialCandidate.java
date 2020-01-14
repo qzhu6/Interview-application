@@ -64,7 +64,7 @@ public class PotentialCandidate implements Serializable {
     public void setSendStatusID(int sendStatusID){this.SendStatusID = sendStatusID;}
 
     @ManyToOne
-    @JoinColumn(name="SendStatusID")
+    @JoinColumn(name="SendStatusID",insertable=false, updatable=false)
     private SendStatus sendStatus;
     public SendStatus getSendStatus(){return sendStatus;}
     public void setSendStatus(SendStatus sendStatus){this.sendStatus = sendStatus;}
@@ -74,7 +74,7 @@ public class PotentialCandidate implements Serializable {
     private int RecruiterEmployeeID;
 
     @ManyToOne
-    @JoinColumn(name="RecruiterEmployeeID")
+    @JoinColumn(name="RecruiterEmployeeID",insertable=false, updatable=false)
     private Employee employee;
     public Employee getEmployee(){return employee;}
     public void setEmployee(Employee employee){this.employee = employee;}
@@ -83,7 +83,7 @@ public class PotentialCandidate implements Serializable {
     private int PositionID;
 
     @ManyToOne
-    @JoinColumn(name="PositionID")
+    @JoinColumn(name="PositionID",insertable=false, updatable=false)
     private Position position;
     public Position getPosition(){return position;}
     public void setPosition(Position position){this.position = position;}
@@ -114,7 +114,7 @@ public class PotentialCandidate implements Serializable {
     private int EmailTemplateID;
 
     @ManyToOne
-    @JoinColumn(name="EmailTemplateID")
+    @JoinColumn(name="EmailTemplateID",insertable=false, updatable=false)
     private EmailTemplate emailTemplate;
     public EmailTemplate getEmailTemplate() {
         return emailTemplate;
