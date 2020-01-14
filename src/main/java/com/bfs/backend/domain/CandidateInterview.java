@@ -21,13 +21,14 @@ public class CandidateInterview implements Serializable {
         this.ID = id;
     }
 
-    @Column(name="PotentialCandidateID")
-    private int PotentailCandidateID;
-    public int getPotentailCandidateID() {
-        return PotentailCandidateID;
+    @ManyToOne
+    @JoinColumn(name="PotentialCandidateID")
+    private PotentialCandidate potentialCandidate;
+    public PotentialCandidate getPotentialCandidate() {
+        return potentialCandidate;
     }
-    public void setPotentailCandidateID(int potentailCandidateID) {
-        this.PotentailCandidateID = potentailCandidateID;
+    public void setPotentialCandidate(PotentialCandidate potentialCandidate) {
+        this.potentialCandidate = potentialCandidate;
     }
 
     @ManyToOne
@@ -40,8 +41,9 @@ public class CandidateInterview implements Serializable {
         this.interviewType = interviewType;
     }
 
-    @Column(name="InterviewEmplID")
-    private int InterviewEmplID;
+    @ManyToOne
+    @JoinColumn(name="InterviewEmplID")
+    private Employee employee;
     public int getInterviewEmplID() {
         return InterviewEmplID;
     }

@@ -31,10 +31,15 @@ public class UserServiceImpl implements UserService {
         return userDAO.getUserByNameOrEmail(str, nameOrEmail);
     }
 
-    @Transactional
     @Override
-    public void testCandidate()
-    {
-        candidateDao.testCandidate();
+    public void testSomeCandidate() {
+
     }
+
+//    @Transactional
+//    @Override
+//    public void testCandidate()
+//    {
+//        candidateDao.testCandidate();
+//    }
 }
