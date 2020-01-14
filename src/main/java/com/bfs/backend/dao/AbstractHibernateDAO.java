@@ -1,6 +1,9 @@
 package com.bfs.backend.dao;
 
+import com.bfs.backend.domain.InternalPersonnel;
+import com.bfs.backend.domain.User;
 import com.bfs.backend.domain.User1;
+import com.bfs.backend.domain.UserInternalPersonnel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -36,6 +39,22 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
             user = users.get(0);
         }
         return user;
+    }
+
+    public UserInternalPersonnel getSomething(){
+        Session session = getCurrentSession();
+        UserInternalPersonnel userInternalPersonnel = null;
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<UserInternalPersonnel> cq = cb.createQuery(UserInternalPersonnel.class);
+        Root<InternalPersonnel> iRoot = cq.from(InternalPersonnel.class);
+        Root<User> uRoot = cq.from(User.class);
+        cq.multiselect(
+                iRoot.get("FirstName"),
+                uRoot.get("UserName"));
+        cq.where(cb.equal(iRoot.get("ID"), uRoot.get("InternalPersonnelID")));
+        List<UserInternalPersonnel> list = session.createQuery(cq).getResultList();
+        userInternalPersonnel = list.get(0);
+        return userInternalPersonnel;
     }
 
     protected Session  getCurrentSession() {
