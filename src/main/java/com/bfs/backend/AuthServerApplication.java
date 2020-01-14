@@ -24,10 +24,14 @@ public class AuthServerApplication {
     public static void main(String[] args) {
 //        SpringApplication.run(AuthServerApplication.class, args);
         ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
-//        UserInternalPersonnelService userInternalPersonnelService = context.getBean(UserInternalPersonnelService.class);
-//        UserInternalPersonnel userInternalPersonnel= userInternalPersonnelService.getUserTest();
-//        System.out.println(userInternalPersonnel.getFirstName());
-//        System.out.println(userInternalPersonnel.getUserName());
+
+        UserInternalPersonnelService userInternalPersonnelService = context.getBean(UserInternalPersonnelService.class);
+        UserInternalPersonnel userInternalPersonnel= userInternalPersonnelService.getUserTest();
+        System.out.println(userInternalPersonnel.getFirstName());
+        System.out.println(userInternalPersonnel.getUserName());
+        System.out.println(userInternalPersonnel.getRoleName());
+        System.out.println(userInternalPersonnel.getDescription());
+
     }
 
 }

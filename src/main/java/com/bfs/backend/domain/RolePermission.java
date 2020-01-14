@@ -7,23 +7,32 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Set;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Service;
+
 
 @Entity
-@Table(name="Department",schema = "Person")
-public class Department implements Serializable{
+@Table(name="RolePermission", schema="Person")
+public class RolePermission implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
     private int ID;
 
-    @Column(name="DepartmentName")
-    private String DepartmentName;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="RoleID")
+    private Role role;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="PermissionID")
+    private Permission permission;
+
+    @Column(name="ActiveFlag")
+    private boolean ActiveFlag;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -41,9 +50,6 @@ public class Department implements Serializable{
     @Column(name="ModifyUser")
     private int ModifyUser;
 
-    @OneToMany(mappedBy="department")
-    private Set<Employee> employees;
-
     public int getID() {
         return ID;
     }
@@ -52,12 +58,28 @@ public class Department implements Serializable{
         this.ID = ID;
     }
 
-    public String getDepartmentName() {
-        return DepartmentName;
+    public Role getRole() {
+        return role;
     }
 
-    public void setDepartmentName(String departmentName) {
-        DepartmentName = departmentName;
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Permission getPermission() {
+        return permission;
+    }
+
+    public void setPermission(Permission permission) {
+        this.permission = permission;
+    }
+
+    public boolean isActiveFlag() {
+        return ActiveFlag;
+    }
+
+    public void setActiveFlag(boolean activeFlag) {
+        ActiveFlag = activeFlag;
     }
 
     public Date getCreateDate() {
@@ -90,13 +112,5 @@ public class Department implements Serializable{
 
     public void setModifyUser(int modifyUser) {
         ModifyUser = modifyUser;
-    }
-
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
     }
 }

@@ -1,13 +1,8 @@
 package com.bfs.backend.dao;
 
-import com.bfs.backend.domain.CandidateInterview;
-import com.bfs.backend.domain.InterviewType;
+import com.bfs.backend.domain.*;
 
-import com.bfs.backend.domain.InternalPersonnel;
-import com.bfs.backend.domain.User;
 
-import com.bfs.backend.domain.User1;
-//import com.bfs.backend.domain.UserInternalPersonnel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -55,35 +50,27 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         String sDate1="12/01/2020 21:03:04";
         Date date1=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sDate1);
         Session session = getCurrentSession();
-        CandidateInterview ci = new CandidateInterview();
-        InterviewType it = new InterviewType();
-        session.save(it);
-        ci.setPotentailCandidateID(1);
-        ci.setInterviewEmplID(2);
-        ci.setOverallRating(1.3);
-        ci.setComments("yes");
-        ci.setInterviewStartDateTime(date1);
-        ci.setInterviewDuration(1.8);
-        ci.setInterviewEndDateTime(date1);
-        ci.setCreateDate(date1);
-        ci.setModifyDate(date1);
-        ci.setCreateUser(1);
-        ci.setModifyUser(2);
-        ci.setInterviewType(it);
-        it.setInterviewTypeName("adsd");
-        it.setInterviewTypeDescription("asdasd");
-        it.setPositionID(3);
-        it.setSequence(2);
-        it.setDefaultInterviewerEmployeeID(3);
-        it.setCreateDate(date1);
-        it.setModifyDate(date1);
-        it.setCreateUser(1);
-        it.setModifyUser(2);
-        Set<CandidateInterview> a=new HashSet<>();
-        a.add(ci);
-        it.setCandidateInterviewSet(a);
-        session.merge(ci);
-        session.merge(it);
+
+        UserInternalPersonnel userInternalPersonnel = null;
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<UserInternalPersonnel> cq = cb.createQuery(UserInternalPersonnel.class);
+        Root<InternalPersonnel> iRoot = cq.from(InternalPersonnel.class);
+        Root<User> uRoot = cq.from(User.class);
+        Root<Role> rRoot = cq.from(Role.class);
+        Root<Permission> pRoot = cq.from(Permission.class);
+        Root<UserRole> urRoot = cq.from(UserRole.class);
+        Root<RolePermission> rpRoot = cq.from(RolePermission.class);
+        cq.multiselect(
+                iRoot.get("FirstName"),
+                uRoot.get("UserName"),
+                rRoot.get("RoleName"),
+                pRoot.get("Description"));
+        cq.where(cb.equal(iRoot.get("ID"), uRoot.get("InternalPersonnelID")));
+        cq.where(cb.equal(uRoot.get("ID"), urRoot.get("UserID")));
+        cq.where(cb.equal(rRoot.get("ID"), urRoot.get("RoleID")));
+        List<UserInternalPersonnel> list = session.createQuery(cq).getResultList();
+        userInternalPersonnel = list.get(0);
+        return userInternalPersonnel;
     }
 
 //

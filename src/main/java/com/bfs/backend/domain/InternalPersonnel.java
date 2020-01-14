@@ -60,6 +60,10 @@ public class InternalPersonnel implements Serializable{
     @JoinColumn(name="ID")
     private Role role;
 
+    @OneToOne
+    @JoinColumn(name="ID")
+    private Employee employee;
+
     public int getID() {
         return ID;
     }
