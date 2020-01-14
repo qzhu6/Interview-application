@@ -1,6 +1,8 @@
 package com.bfs.backend.dao;
 
 import com.bfs.backend.domain.*;
+
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -10,7 +12,13 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public abstract class AbstractHibernateDAO<T extends Serializable> {
 
@@ -38,8 +46,11 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         return user;
     }
 
-    public UserInternalPersonnel getSomething(){
+    public void testSomeCandidate() throws ParseException {
+        String sDate1="12/01/2020 21:03:04";
+        Date date1=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sDate1);
         Session session = getCurrentSession();
+
         UserInternalPersonnel userInternalPersonnel = null;
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<UserInternalPersonnel> cq = cb.createQuery(UserInternalPersonnel.class);
@@ -61,6 +72,25 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         userInternalPersonnel = list.get(0);
         return userInternalPersonnel;
     }
+
+//
+//=======
+//    public UserInternalPersonnel getSomething(){
+//        Session session = getCurrentSession();
+//        UserInternalPersonnel userInternalPersonnel = null;
+//        CriteriaBuilder cb = session.getCriteriaBuilder();
+//        CriteriaQuery<UserInternalPersonnel> cq = cb.createQuery(UserInternalPersonnel.class);
+//        Root<InternalPersonnel> iRoot = cq.from(InternalPersonnel.class);
+//        Root<User> uRoot = cq.from(User.class);
+//        cq.multiselect(
+//                iRoot.get("FirstName"),
+//                uRoot.get("UserName"));
+//        cq.where(cb.equal(iRoot.get("ID"), uRoot.get("InternalPersonnelID")));
+//        List<UserInternalPersonnel> list = session.createQuery(cq).getResultList();
+//        userInternalPersonnel = list.get(0);
+//        return userInternalPersonnel;
+//    }
+
 
     protected Session  getCurrentSession() {
         return sessionFactory.getCurrentSession();

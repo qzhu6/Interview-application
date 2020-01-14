@@ -22,16 +22,19 @@ public class Employee implements Serializable{
     private int ID;
 
     @Column(name="InternalPersonnelID")
+
     private int InternalPersonnelID;
 
     @Column(name="DepartmentID",insertable=false, updatable=false)
     private int DepartmentID;
+
 
     @Column(name="Title")
     private String Title;
 
     @Column(name="ManagerID")
     private int ManagerID;
+
 
     @Column(name="StartDate")
     private Date StartDate;
@@ -50,6 +53,7 @@ public class Employee implements Serializable{
     private Date ModifyDate;
 
     @Column(name="CreateUser")
+
     private int CreateUser;
 
     @Column(name="ModifyUser")
@@ -165,4 +169,5 @@ public class Employee implements Serializable{
     public void setDepartment(Department department) {
         this.department = department;
     }
+
 }

@@ -23,7 +23,6 @@ public class LoginController {
     private static final String jwtTokenCookieName = "JWT-TOKEN";
     private static final String signingKey = "signingKey";
 
-
     @RequestMapping("/login")
     public String login(){
         return "login";

@@ -7,7 +7,7 @@ import com.bfs.backend.domain.User1;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDAOImpl  extends AbstractHibernateDAO implements UserDAO {
+public class UserDAOImpl extends AbstractHibernateDAO implements UserDAO {
 
 
     public UserDAOImpl() {
