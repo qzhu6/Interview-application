@@ -8,7 +8,12 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 @Entity
 @Table(name="PotentialCandidate", schema = "Recruiting")
 public class PotentialCandidate implements Serializable {
@@ -53,29 +58,41 @@ public class PotentialCandidate implements Serializable {
     public String getResumeFileLocation(){return ResumeFileLocation;}
     public void setResumeFileLocation(String resumeFileLocation){this.ResumeFileLocation=resumeFileLocation;}
 
-
     @Column(name="SendStatusID")
     private int SendStatusID;
     public int getSendStatusID(){return SendStatusID;}
     public void setSendStatusID(int sendStatusID){this.SendStatusID = sendStatusID;}
 
+    @ManyToOne
+    @JoinColumn(name="SendStatusID")
+    private SendStatus sendStatus;
+    public SendStatus getSendStatus(){return sendStatus;}
+    public void setSendStatus(SendStatus sendStatus){this.sendStatus = sendStatus;}
+
 
     @Column(name="RecruiterEmployeeID")
     private int RecruiterEmployeeID;
-    public int getRecruiterEmployeeID(){return RecruiterEmployeeID;}
-    public void setRecruiterEmployeeID(int recruiterEmployeeID){this.RecruiterEmployeeID = recruiterEmployeeID;}
+
+    @ManyToOne
+    @JoinColumn(name="RecruiterEmployeeID")
+    private Employee employee;
+    public Employee getEmployee(){return employee;}
+    public void setEmployee(Employee employee){this.employee = employee;}
 
     @Column(name="PositionID")
     private int PositionID;
-    public int getPositionID(){return PositionID;}
-    public void setPositionID(int positionID){this.PositionID = positionID;}
 
+    @ManyToOne
+    @JoinColumn(name="PositionID")
+    private Position position;
+    public Position getPosition(){return position;}
+    public void setPosition(Position position){this.position = position;}
 
-
-    @Column(name="DefaultInterviewerEmployeeID")
-    private int DefaultInterviewerEmployeeID;
-    public int getDefaultInterviewerEmployeeID(){return DefaultInterviewerEmployeeID;}
-    public void setDefaultInterviewerEmployeeID(int defaultInterviewerEmployeeID){this.DefaultInterviewerEmployeeID = defaultInterviewerEmployeeID;}
+//    @ManyToOne
+//    @Column(name="DefaultInterviewerEmployeeID")
+//    private int DefaultInterviewerEmployeeID;
+//    public int getDefaultInterviewerEmployeeID(){return DefaultInterviewerEmployeeID;}
+//    public void setDefaultInterviewerEmployeeID(int defaultInterviewerEmployeeID){this.DefaultInterviewerEmployeeID = defaultInterviewerEmployeeID;}
 
 
     @Column(name="Comments")
@@ -93,14 +110,17 @@ public class PotentialCandidate implements Serializable {
     public boolean getActiveFlag(){return ActiveFlag;}
     public void setActiveFlag(boolean activeFlag){this.ActiveFlag=activeFlag;}
 
-
     @Column(name="EmailTemplateID")
     private int EmailTemplateID;
-    public int getEmailTemplateID() {
-        return EmailTemplateID;
+
+    @ManyToOne
+    @JoinColumn(name="EmailTemplateID")
+    private EmailTemplate emailTemplate;
+    public EmailTemplate getEmailTemplate() {
+        return emailTemplate;
     }
-    public void setEmailTemplateID(int emailTemplateID) {
-        this.EmailTemplateID = emailTemplateID;
+    public void setEmailTemplate(EmailTemplate emailTemplate) {
+        this.emailTemplate = emailTemplate;
     }
 
     @CreationTimestamp

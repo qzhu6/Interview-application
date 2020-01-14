@@ -4,18 +4,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 @Entity
 @Table(name="Employee",schema="Person")
 public class Employee implements Serializable{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
@@ -51,6 +54,7 @@ public class Employee implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="ModifyDate")
     private Date ModifyDate;
+
 
     @Column(name="CreateUser")
 
@@ -170,4 +174,21 @@ public class Employee implements Serializable{
         this.department = department;
     }
 
+    @OneToMany(mappedBy = "interviewType")
+    private Set<CandidateInterview> candidateInterviewSet = new HashSet<CandidateInterview>();
+    public Set<CandidateInterview> getCandidateInterviewSet() {
+        return candidateInterviewSet;
+    }
+    public void setCandidateInterviewSet(Set<CandidateInterview> candidateInterviewSet) {
+        this.candidateInterviewSet = candidateInterviewSet;
+    }
+
+    @OneToMany(mappedBy = "employee")
+    private Set<PotentialCandidate> potentialCandidateSet = new HashSet<PotentialCandidate>();
+    public Set<PotentialCandidate> getPotentialCandidateSet() {
+        return potentialCandidateSet;
+    }
+    public void GetPotentialCandidateSet(Set<PotentialCandidate> potentialCandidateSet) {
+        this.potentialCandidateSet = potentialCandidateSet;
+    }
 }
