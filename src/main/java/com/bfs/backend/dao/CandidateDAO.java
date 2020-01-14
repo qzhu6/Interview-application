@@ -1,4 +1,7 @@
 package com.bfs.backend.dao;
 
-public class CandidateDAO {
+import java.text.ParseException;
+
+public interface CandidateDAO{
+    void testCandidate();
 }

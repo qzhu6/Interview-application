@@ -14,40 +14,34 @@ public class CandidateInterview implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
     private int ID;
-
     public int getID() {
         return ID;
     }
-
     public void setID(int id) {
         this.ID = id;
     }
 
     @Column(name="PotentialCandidateID")
     private int PotentailCandidateID;
-
     public int getPotentailCandidateID() {
         return PotentailCandidateID;
     }
-
     public void setPotentailCandidateID(int potentailCandidateID) {
         this.PotentailCandidateID = potentailCandidateID;
     }
 
-    @Column(name="InterviewTypeID")
-    private int InterviewTypeID;
-
-    public int getInterviewTypeID() {
-        return InterviewTypeID;
+    @ManyToOne
+    @JoinColumn(name="InterviewTypeID")
+    private InterviewType interviewType;
+    public InterviewType getInterviewType() {
+        return interviewType;
     }
-
-    public void setInterviewTypeID(int interviewTypeID) {
-        this.InterviewTypeID = interviewTypeID;
+    public void setInterviewType(InterviewType interviewType) {
+        this.interviewType = interviewType;
     }
 
     @Column(name="InterviewEmplID")
     private int InterviewEmplID;
-
     public int getInterviewEmplID() {
         return InterviewEmplID;
     }
@@ -57,33 +51,27 @@ public class CandidateInterview implements Serializable {
 
     @Column(name="OverallRating")
     private double OverallRating;
-
     public double getOverallRating() {
         return OverallRating;
     }
-
     public void setOverallRating(double overallRating) {
         this.OverallRating = overallRating;
     }
 
     @Column(name="Comments")
     private String Comments;
-
     public String getComments() {
         return Comments;
     }
-
     public void setComments(String comments) {
         this.Comments = comments;
     }
 
     @Column(name="InterviewStartDateTime")
     private Date InterviewStartDateTime;
-
     public Date getInterviewStartDateTime() {
         return InterviewStartDateTime;
     }
-
     public void setInterviewStartDateTime(Date interviewStartDateTime) {
         this.InterviewStartDateTime = interviewStartDateTime;
     }
@@ -93,18 +81,15 @@ public class CandidateInterview implements Serializable {
     public double getInterviewDuration() {
         return InterviewDuration;
     }
-
     public void setInterviewDuration(double interviewDuration) {
         this.InterviewDuration = interviewDuration;
     }
 
     @Column(name="InterviewEndDateTime")
     private Date InterviewEndDateTime;
-
     public Date getInterviewEndDateTime() {
         return InterviewEndDateTime;
     }
-
     public void setInterviewEndDateTime(Date interviewEndDateTime) {
         this.InterviewEndDateTime = interviewEndDateTime;
     }
@@ -129,29 +114,24 @@ public class CandidateInterview implements Serializable {
     public Date getModifyDate() {
         return ModifyDate;
     }
-
     public void setModifyDate(Date modifyDate) {
         this.ModifyDate = modifyDate;
     }
 
     @Column(name="CreateUser")
     private int CreateUser;
-
     public int getCreateUser() {
         return CreateUser;
     }
-
     public void setCreateUser(int createUser) {
         this.CreateUser = createUser;
     }
 
     @Column(name="ModifyUser")
     private int ModifyUser;
-
     public int getModifyUser() {
         return ModifyUser;
     }
-
     public void setModifyUser(int modifyUser) {
         this.ModifyUser = modifyUser;
     }
