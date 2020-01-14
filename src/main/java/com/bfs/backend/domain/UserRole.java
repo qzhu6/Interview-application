@@ -27,12 +27,18 @@ public class UserRole implements Serializable {
     private String ID;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="UserID")
+    @JoinColumn(name="UserID",insertable=false, updatable=false)
     private User user;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="RoleID")
+    @JoinColumn(name="RoleID",insertable=false, updatable=false)
     private Role role;
+
+    @Column(name="UserID")
+    private int UserID;
+
+    @Column(name="RoleID")
+    private int RoleID;
 
     @Column(name="ActiveFlag")
     private boolean ActiveFlag;

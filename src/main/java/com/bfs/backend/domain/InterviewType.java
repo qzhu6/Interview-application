@@ -42,7 +42,7 @@ public class InterviewType implements Serializable{
     private int PositionID;
 
     @ManyToOne
-    @JoinColumn(name="PositionID")
+    @JoinColumn(name="PositionID",insertable=false, updatable=false)
     private InterviewType interviewType;
     public InterviewType getInterviewType(){return interviewType;}
     public void setInterviewType(InterviewType interviewType){this.interviewType = interviewType;}

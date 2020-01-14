@@ -28,12 +28,18 @@ public class RolePermission implements Serializable{
     @Column(name="ID")
     private int ID;
 
+    @Column(name="RoleID")
+    private int RoleID;
+
+    @Column(name="PermissionID")
+    private int PermissionID;
+
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="RoleID")
+    @JoinColumn(name="RoleID",insertable=false, updatable=false)
     private Role role;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="PermissionID")
+    @JoinColumn(name="PermissionID",insertable=false, updatable=false)
     private Permission permission;
 
     @Column(name="ActiveFlag")
