@@ -1,8 +1,14 @@
 package com.bfs.backend.dao;
 
+<<<<<<< HEAD
 import com.bfs.backend.domain.CandidateInterview;
 import com.bfs.backend.domain.InterviewType;
+=======
+import com.bfs.backend.domain.InternalPersonnel;
+import com.bfs.backend.domain.User;
+>>>>>>> 600e27be13b1252e3108851b175468c51facd22f
 import com.bfs.backend.domain.User1;
+import com.bfs.backend.domain.UserInternalPersonnel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -46,6 +52,7 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         return user;
     }
 
+<<<<<<< HEAD
     public void testSomeCandidate() throws ParseException {
         String sDate1="12/01/2020 21:03:04";
         Date date1=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sDate1);
@@ -82,6 +89,24 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
     }
 
 
+=======
+    public UserInternalPersonnel getSomething(){
+        Session session = getCurrentSession();
+        UserInternalPersonnel userInternalPersonnel = null;
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<UserInternalPersonnel> cq = cb.createQuery(UserInternalPersonnel.class);
+        Root<InternalPersonnel> iRoot = cq.from(InternalPersonnel.class);
+        Root<User> uRoot = cq.from(User.class);
+        cq.multiselect(
+                iRoot.get("FirstName"),
+                uRoot.get("UserName"));
+        cq.where(cb.equal(iRoot.get("ID"), uRoot.get("InternalPersonnelID")));
+        List<UserInternalPersonnel> list = session.createQuery(cq).getResultList();
+        userInternalPersonnel = list.get(0);
+        return userInternalPersonnel;
+    }
+
+>>>>>>> 600e27be13b1252e3108851b175468c51facd22f
     protected Session  getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
