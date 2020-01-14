@@ -6,7 +6,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
 
+
+@Getter
+@Setter
 @Entity
 @Table(name="CandidateInterview", schema = "Recruiting")
 public class CandidateInterview implements Serializable {
@@ -44,11 +49,11 @@ public class CandidateInterview implements Serializable {
     @ManyToOne
     @JoinColumn(name="InterviewEmplID")
     private Employee employee;
-    public int getInterviewEmplID() {
-        return InterviewEmplID;
+    public Employee getInterviewEmplID() {
+        return employee;
     }
-    public void setInterviewEmplID(int interviewEmplID) {
-        this.InterviewEmplID = interviewEmplID;
+    public void setInterviewEmplID(Employee employee) {
+        this.employee = employee;
     }
 
     @Column(name="OverallRating")
