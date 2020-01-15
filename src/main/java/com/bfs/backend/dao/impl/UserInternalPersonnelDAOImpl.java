@@ -6,6 +6,8 @@ import com.bfs.backend.domain.RecruitingTesting;
 import com.bfs.backend.domain.UserInternalPersonnel;
 import org.springframework.stereotype.Repository;
 
+import java.text.ParseException;
+
 @Repository("userInternalPersonnelDao")
 public class UserInternalPersonnelDAOImpl extends AbstractHibernateDAO implements UserInternalPersonnelDAO {
 
@@ -15,7 +17,7 @@ public class UserInternalPersonnelDAOImpl extends AbstractHibernateDAO implement
     }
 
     @Override
-    public UserInternalPersonnel getTest(){
+    public UserInternalPersonnel getTest() throws ParseException {
         return testSomeCandidate();
     }
 

@@ -1,10 +1,9 @@
-package com.bfs.backend.dao;
+package com.bfs.backend.service;
 
 import com.bfs.backend.responseDomain.homeCandidate;
 
-import java.text.ParseException;
 import java.util.List;
 
-public interface CandidateDAO{
+public interface HomeCandidateService {
     List<homeCandidate> getHomeCandidate(int id);
 }

@@ -25,7 +25,6 @@ public class Employee implements Serializable{
     private int ID;
 
     @Column(name="InternalPersonnelID")
-
     private int InternalPersonnelID;
 
     @Column(name="DepartmentID",insertable=false, updatable=false)

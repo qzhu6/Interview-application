@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+
 @Service
 public class UserInternalPersonnelServiceImpl implements UserInternalPersonnelService {
     private UserInternalPersonnelDAO userInternalPersonnelDao;
@@ -19,7 +21,7 @@ public class UserInternalPersonnelServiceImpl implements UserInternalPersonnelSe
 
     @Transactional
     @Override
-    public UserInternalPersonnel getUserTest(){
+    public UserInternalPersonnel getUserTest() throws ParseException {
         return userInternalPersonnelDao.getTest();
     }
 

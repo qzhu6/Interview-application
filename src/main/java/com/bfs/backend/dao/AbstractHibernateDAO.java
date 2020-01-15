@@ -3,6 +3,7 @@ package com.bfs.backend.dao;
 import com.bfs.backend.domain.*;
 
 
+import com.bfs.backend.responseDomain.homeCandidate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -14,11 +15,7 @@ import javax.persistence.criteria.Root;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public abstract class AbstractHibernateDAO<T extends Serializable> {
 
@@ -46,11 +43,43 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         return user;
     }
 
-    public UserInternalPersonnel testSomeCandidate(){
-//        String sDate1="12/01/2020 21:03:04";
-//        Date date1=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sDate1);
-        Session session = getCurrentSession();
 
+    public List<homeCandidate> getHomeCandidateByHibernate(int ID){
+        Session session = getCurrentSession();
+        homeCandidate homeCandidate = null;
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<homeCandidate> hc = cb.createQuery(homeCandidate.class);
+        Root<CandidateInterview> cRoot = hc.from(CandidateInterview.class);
+        Root<PotentialCandidate> pRoot = hc.from(PotentialCandidate.class);
+        Root<Employee> eRoot = hc.from(Employee.class);
+        Root<InternalPersonnel> iRoot = hc.from(InternalPersonnel.class);
+        Root<Position> positionRoot = hc.from(Position.class);
+        Root<User> uRoot = hc.from(User.class);
+        hc.multiselect(
+                cRoot.get("InterviewStartDateTime"),
+                cRoot.get("InterviewDuration"),
+                pRoot.get("FirstName"),
+                pRoot.get("LastName"),
+                pRoot.get("CellPhone"),
+                iRoot.get("FirstName"),
+                iRoot.get("LastName"),
+                positionRoot.get("PositionName"),
+                pRoot.get("ResumeFileLocation"));
+        hc.where(cb.equal(cRoot.get("potentialCandidate"), pRoot.get("ID")));
+        hc.where(cb.equal(cRoot.get("employee"), eRoot.get("ID")));
+        hc.where(cb.equal(eRoot.get("internalPersonnel"), iRoot.get("ID")));
+        hc.where(cb.equal(pRoot.get("position"), positionRoot.get("ID")));
+        hc.where(cb.equal(iRoot.get("ID"), uRoot.get("internalPersonnel")));
+        hc.where(cb.equal(uRoot.get("ID"), ID));
+        List<homeCandidate> list = session.createQuery(hc).getResultList();
+        return list;
+    }
+
+
+    public UserInternalPersonnel testSomeCandidate() throws ParseException {
+        String sDate1="12/01/2020 21:03:04";
+        Date date1=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(sDate1);
+        Session session = getCurrentSession();
         UserInternalPersonnel userInternalPersonnel = null;
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<UserInternalPersonnel> cq = cb.createQuery(UserInternalPersonnel.class);
