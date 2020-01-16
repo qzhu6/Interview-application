@@ -3,6 +3,8 @@ package com.bfs.backend;
 
 import com.bfs.backend.dao.CandidateDAO;
 import com.bfs.backend.domain.RecruitingTesting;
+import com.bfs.backend.responseDomain.Interview;
+import com.bfs.backend.service.InterviewService;
 import com.bfs.backend.service.UserService;
 import com.bfs.backend.config.HibernateConfig;
 import com.bfs.backend.domain.UserInternalPersonnel;
@@ -14,6 +16,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootApplication(exclude= HibernateJpaAutoConfiguration.class)
 public class AuthServerApplication {
@@ -26,20 +32,61 @@ public class AuthServerApplication {
 //        SpringApplication.run(AuthServerApplication.class, args);
         ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
 
-        UserInternalPersonnelService userInternalPersonnelService = context.getBean(UserInternalPersonnelService.class);
-        UserInternalPersonnel userInternalPersonnel= userInternalPersonnelService.getUserTest();
-        System.out.println(userInternalPersonnel.getFirstName());
-        System.out.println(userInternalPersonnel.getUserName());
-        System.out.println(userInternalPersonnel.getRoleName());
-        System.out.println(userInternalPersonnel.getDescription());
-
-        RecruitingTesting recruitingTesting = userInternalPersonnelService.getRecruiting();
-        System.out.println(recruitingTesting.getPositionName());
-        System.out.println(recruitingTesting.getInterviewTypeDescription());
-        System.out.println(recruitingTesting.getEmailSubject());
-        System.out.println(recruitingTesting.getEmail());
-        System.out.println(recruitingTesting.getSendDescription());
-
+        InterviewService interviewService = context.getBean(InterviewService.class);
+        List<Interview> interview = interviewService.getListInterview();
+//        List<Interview> interview = interviewDao.getInterview();
+        Comparator<Interview> compareByName = Comparator.comparing(Interview::getIntervieweeFullName).thenComparing(Interview::getPositionName).thenComparing(Interview::getSequence);
+        List<Interview> sortedInterview = interview.stream().sorted(compareByName).collect(Collectors.toList());
+        List<List<Interview>> listBoCui = new ArrayList<List<Interview>>();
+        List<Interview> listNoBoCui = new ArrayList<Interview>();
+        for (int i = 0; i < sortedInterview.size(); i++) {
+            if (i == 0) {
+                listNoBoCui.add(sortedInterview.get(i));
+            } else if (i != 0) {
+                if (!sortedInterview.get(i).getIntervieweeFullName().equals(sortedInterview.get(i - 1).getIntervieweeFullName()) && !sortedInterview.get(i).getPositionName().equals(sortedInterview.get(i - 1).getPositionName())) {
+                    listBoCui.add(listNoBoCui);
+                    listNoBoCui = new ArrayList<Interview>();
+                    listNoBoCui.add(sortedInterview.get(i));
+                } else {
+                    listNoBoCui.add(sortedInterview.get(i));
+                }
+            }
+        }
+        listBoCui.add(listNoBoCui);
+        for(Interview inter: listBoCui.get(0)){
+//            System.out.println(inter.getID());
+//            System.out.println(inter.getInterviewStatus());
+            System.out.println(inter.getIntervieweeFullName());
+//            System.out.println(inter.getInterviewerFirstName() + " " + inter.getInterviewerLastName());
+//            System.out.println(inter.getComment());
+            System.out.println(inter.getPositionName());
+            System.out.println(inter.getSequence());
+        }
     }
-
 }
+
+//            System.out.println(inter.getID());
+//            System.out.println(inter.getInterviewStatus());
+//            System.out.println(inter.getIntervieweeFullName());
+//            System.out.println(inter.getInterviewerFirstName() + " " + inter.getInterviewerLastName());
+//            System.out.println(inter.getComment());
+//            System.out.println(inter.getPositionName());
+//            System.out.println(inter.getSequence());
+//        }
+
+//        UserInternalPersonnelService userInternalPersonnelService = context.getBean(UserInternalPersonnelService.class);
+//        UserInternalPersonnel userInternalPersonnel= userInternalPersonnelService.getUserTest();
+//        System.out.println(userInternalPersonnel.getFirstName());
+//        System.out.println(userInternalPersonnel.getUserName());
+//        System.out.println(userInternalPersonnel.getRoleName());
+//        System.out.println(userInternalPersonnel.getDescription());
+//
+//        RecruitingTesting recruitingTesting = userInternalPersonnelService.getRecruiting();
+//        System.out.println(recruitingTesting.getPositionName());
+//        System.out.println(recruitingTesting.getInterviewTypeDescription());
+//        System.out.println(recruitingTesting.getEmailSubject());
+//        System.out.println(recruitingTesting.getEmail());
+//        System.out.println(recruitingTesting.getSendDescription());
+
+//    }
+
