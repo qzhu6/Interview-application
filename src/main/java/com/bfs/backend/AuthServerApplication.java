@@ -29,39 +29,40 @@ public class AuthServerApplication {
 //        SpringApplication.run(AuthServerApplication.class, args);
 
     public static void main(String[] args) {
-//        SpringApplication.run(AuthServerApplication.class, args);
-        ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
-
-        InterviewService interviewService = context.getBean(InterviewService.class);
-        List<Interview> interview = interviewService.getListInterview();
-//        List<Interview> interview = interviewDao.getInterview();
-        Comparator<Interview> compareByName = Comparator.comparing(Interview::getIntervieweeFullName).thenComparing(Interview::getPositionName).thenComparing(Interview::getSequence);
-        List<Interview> sortedInterview = interview.stream().sorted(compareByName).collect(Collectors.toList());
-        List<List<Interview>> listBoCui = new ArrayList<List<Interview>>();
-        List<Interview> listNoBoCui = new ArrayList<Interview>();
-        for (int i = 0; i < sortedInterview.size(); i++) {
-            if (i == 0) {
-                listNoBoCui.add(sortedInterview.get(i));
-            } else if (i != 0) {
-                if (!sortedInterview.get(i).getIntervieweeFullName().equals(sortedInterview.get(i - 1).getIntervieweeFullName()) && !sortedInterview.get(i).getPositionName().equals(sortedInterview.get(i - 1).getPositionName())) {
-                    listBoCui.add(listNoBoCui);
-                    listNoBoCui = new ArrayList<Interview>();
-                    listNoBoCui.add(sortedInterview.get(i));
-                } else {
-                    listNoBoCui.add(sortedInterview.get(i));
-                }
-            }
-        }
-        listBoCui.add(listNoBoCui);
-        for(Interview inter: listBoCui.get(0)){
-//            System.out.println(inter.getID());
-//            System.out.println(inter.getInterviewStatus());
-            System.out.println(inter.getIntervieweeFullName());
-//            System.out.println(inter.getInterviewerFirstName() + " " + inter.getInterviewerLastName());
-//            System.out.println(inter.getComment());
-            System.out.println(inter.getPositionName());
-            System.out.println(inter.getSequence());
-        }
+        SpringApplication.run(AuthServerApplication.class, args);
+//        ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
+//
+//        InterviewService interviewService = context.getBean(InterviewService.class);
+//        List<Interview> interview = interviewService.getListInterview();
+////        List<Interview> interview = interviewDao.getInterview();
+//        Comparator<Interview> compareByName = Comparator.comparing(Interview::getIntervieweeFullName).thenComparing(Interview::getPositionName).thenComparing(Interview::getSequence);
+//        List<Interview> sortedInterview = interview.stream().sorted(compareByName).collect(Collectors.toList());
+//        List<List<Interview>> listBoCui = new ArrayList<List<Interview>>();
+//        List<Interview> listNoBoCui = new ArrayList<Interview>();
+//        for (int i = 0; i < sortedInterview.size(); i++) {
+//            if (i == 0) {
+//                listNoBoCui.add(sortedInterview.get(i));
+//            } else if (i != 0) {
+//                if (!sortedInterview.get(i).getIntervieweeFullName().equals(sortedInterview.get(i - 1).getIntervieweeFullName()) && !sortedInterview.get(i).getPositionName().equals(sortedInterview.get(i - 1).getPositionName())) {
+//                    listBoCui.add(listNoBoCui);
+//                    listNoBoCui = new ArrayList<Interview>();
+//                    listNoBoCui.add(sortedInterview.get(i));
+//                } else {
+//                    listNoBoCui.add(sortedInterview.get(i));
+//                }
+//            }
+//        }
+//        listBoCui.add(listNoBoCui);
+//        for(Interview inter: listBoCui.get(0)){
+//            System.out.println("Interview ID: " + inter.getID());
+//            System.out.println("Interview Status: " + inter.getInterviewStatus());
+//            System.out.println("Interviewee: " + inter.getIntervieweeFullName());
+////            System.out.println(inter.getInterviewerFirstName() + " " + inter.getInterviewerLastName());
+//            System.out.println("Comment: " + inter.getComment());
+//            System.out.println("Position Name: " + inter.getPositionName());
+//            System.out.println("Sequence: " + inter.getSequence());
+//            System.out.println("*************************************");
+//        }
     }
 }
 

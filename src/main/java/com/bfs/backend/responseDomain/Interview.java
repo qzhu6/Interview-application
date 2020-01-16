@@ -163,6 +163,6 @@ public class Interview implements Serializable {
     }
 
     public void setIntervieweeFullName() {
-        IntervieweeFullName = IntervieweeFirstName + IntervieweeLastName;
+        IntervieweeFullName = IntervieweeFirstName + " " + IntervieweeLastName;
     }
 }
