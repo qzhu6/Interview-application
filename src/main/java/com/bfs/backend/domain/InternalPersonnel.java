@@ -57,9 +57,9 @@ public class InternalPersonnel implements Serializable{
     @Column(name="ModifyDate")
     private Date ModifyDate;
 
-    @OneToOne
-    @JoinColumn(name="ID")
-    private User user;
+//    @OneToOne
+//    @JoinColumn(name="ID")
+//    private User user;
 
     @OneToOne
     @JoinColumn(name="ID")
@@ -149,13 +149,13 @@ public class InternalPersonnel implements Serializable{
         ModifyDate = modifyDate;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Role getRole() {
         return role;

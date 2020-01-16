@@ -161,11 +161,11 @@ public class CandidateInterview implements Serializable {
     }
 
     @Column(name="ModifyUser")
-    private int ModifyUser;
-    public int getModifyUser() {
+    private Integer ModifyUser;
+    public Integer getModifyUser() {
         return ModifyUser;
     }
-    public void setModifyUser(int modifyUser) {
+    public void setModifyUser(Integer modifyUser) {
         this.ModifyUser = modifyUser;
     }
 

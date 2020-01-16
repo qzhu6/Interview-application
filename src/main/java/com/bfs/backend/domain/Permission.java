@@ -52,7 +52,7 @@ public class Permission implements Serializable{
     private int CreateUser;
 
     @Column(name="ModifyUser")
-    private int ModifyUser;
+    private Integer ModifyUser;
 
     @OneToMany(mappedBy = "permission", cascade = CascadeType.ALL)
     private Set<RolePermission> rolePermission = new HashSet<RolePermission>();

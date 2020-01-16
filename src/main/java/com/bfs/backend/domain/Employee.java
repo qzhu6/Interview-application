@@ -8,14 +8,13 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import lombok.Getter;
 import lombok.Setter;
 
 
-@Getter
-@Setter
 @Entity
 @Table(name="Employee",schema="Person")
 public class Employee implements Serializable{
@@ -35,7 +34,7 @@ public class Employee implements Serializable{
     private String Title;
 
     @Column(name="ManagerID")
-    private int ManagerID;
+    private Integer ManagerID;
 
 
     @Column(name="StartDate")
@@ -56,13 +55,12 @@ public class Employee implements Serializable{
 
 
     @Column(name="CreateUser")
-
-    private int CreateUser;
+    private Integer CreateUser;
 
     @Column(name="ModifyUser")
-    private int ModifyUser;
+    private Integer ModifyUser;
 
-    @OneToOne(mappedBy = "employee")
+    @OneToOne(mappedBy = "employee", fetch = FetchType.LAZY)
     private InternalPersonnel internalPersonnel;
 
     @ManyToOne
@@ -101,11 +99,11 @@ public class Employee implements Serializable{
         Title = title;
     }
 
-    public int getManagerID() {
+    public Integer getManagerID() {
         return ManagerID;
     }
 
-    public void setManagerID(int managerID) {
+    public void setManagerID(Integer managerID) {
         ManagerID = managerID;
     }
 
@@ -149,11 +147,11 @@ public class Employee implements Serializable{
         CreateUser = createUser;
     }
 
-    public int getModifyUser() {
+    public Integer getModifyUser() {
         return ModifyUser;
     }
 
-    public void setModifyUser(int modifyUser) {
+    public void setModifyUser(Integer modifyUser) {
         ModifyUser = modifyUser;
     }
 
@@ -189,5 +187,27 @@ public class Employee implements Serializable{
     }
     public void GetPotentialCandidateSet(Set<PotentialCandidate> potentialCandidateSet) {
         this.potentialCandidateSet = potentialCandidateSet;
+    }
+
+    public Employee(Integer ID, Integer InternalPersonnelID, Integer DepartmentID, String Title, Integer ManagerID, Date StartDate, Date EndDate, Date CreateDate, Date ModifyDate, Integer CreateUser, Integer ModifyUser) {
+        this.ID = ID;
+        this.InternalPersonnelID = InternalPersonnelID;
+        this.DepartmentID = DepartmentID;
+        this.Title = Title;
+        this.ManagerID = ManagerID;
+        this.StartDate = StartDate;
+        this.EndDate = EndDate;
+        this.CreateDate = CreateDate;
+        this.ModifyDate = ModifyDate;
+        this.CreateUser = CreateUser;
+        if(ModifyUser == null){
+            this.ModifyUser = -1;
+        }
+        else{
+            this.ModifyUser = ModifyUser;
+        }
+    }
+
+    public Employee() {
     }
 }
