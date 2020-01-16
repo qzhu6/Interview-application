@@ -168,5 +168,46 @@ public class PotentialCandidate implements Serializable {
         this.candidateInterviewSet = candidateInterviewSet;
     }
 
+    @Column(name="Resource")
+    private String Resource;
 
+    public String getResource() {
+        return Resource;
+    }
+
+    public void setResource(String resource) {
+        Resource = resource;
+    }
+
+    public int getRecruiterEmployeeID() {
+        return RecruiterEmployeeID;
+    }
+
+    public void setRecruiterEmployeeID(int recruiterEmployeeID) {
+        RecruiterEmployeeID = recruiterEmployeeID;
+    }
+
+    public int getPositionID() {
+        return PositionID;
+    }
+
+    public void setPositionID(int positionID) {
+        PositionID = positionID;
+    }
+
+    public boolean isReachoutFlag() {
+        return ReachoutFlag;
+    }
+
+    public boolean isActiveFlag() {
+        return ActiveFlag;
+    }
+
+    public int getEmailTemplateID() {
+        return EmailTemplateID;
+    }
+
+    public void setEmailTemplateID(int emailTemplateID) {
+        EmailTemplateID = emailTemplateID;
+    }
 }
