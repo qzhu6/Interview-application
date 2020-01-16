@@ -79,14 +79,14 @@ public class CandidateInterview implements Serializable {
     }
 
     @Column(name="InterviewerEmplID")
-    private int InteviewerEmplID;
+    private int InterviewerEmplID;
 
     public int getInteviewerEmplID() {
-        return InteviewerEmplID;
+        return InterviewerEmplID;
     }
 
     public void setInteviewerEmplID(int inteviewerEmplID) {
-        InteviewerEmplID = inteviewerEmplID;
+        InterviewerEmplID = inteviewerEmplID;
     }
 
     @Column(name="OverallRating")
@@ -174,5 +174,16 @@ public class CandidateInterview implements Serializable {
     }
     public void setModifyUser(int modifyUser) {
         this.ModifyUser = modifyUser;
+    }
+
+    @Column(name="InterviewStatus")
+    private String InterviewStatus;
+
+    public String getInterviewStatus() {
+        return InterviewStatus;
+    }
+
+    public void setInterviewStatus(String interviewStatus) {
+        InterviewStatus = interviewStatus;
     }
 }
