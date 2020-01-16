@@ -170,4 +170,47 @@ public class PotentialCandidate implements Serializable {
 
     @Column(name="Resource")
     private String Resource;
+<<<<<<< HEAD
+=======
+
+    public String getResource() {
+        return Resource;
+    }
+
+    public void setResource(String resource) {
+        Resource = resource;
+    }
+
+    public int getRecruiterEmployeeID() {
+        return RecruiterEmployeeID;
+    }
+
+    public void setRecruiterEmployeeID(int recruiterEmployeeID) {
+        RecruiterEmployeeID = recruiterEmployeeID;
+    }
+
+    public int getPositionID() {
+        return PositionID;
+    }
+
+    public void setPositionID(int positionID) {
+        PositionID = positionID;
+    }
+
+    public boolean isReachoutFlag() {
+        return ReachoutFlag;
+    }
+
+    public boolean isActiveFlag() {
+        return ActiveFlag;
+    }
+
+    public int getEmailTemplateID() {
+        return EmailTemplateID;
+    }
+
+    public void setEmailTemplateID(int emailTemplateID) {
+        EmailTemplateID = emailTemplateID;
+    }
+>>>>>>> 5ec2d8e3b84f00cae27a5849ffe898e402ef2272
 }
