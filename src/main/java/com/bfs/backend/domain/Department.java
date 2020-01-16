@@ -44,7 +44,7 @@ public class Department implements Serializable{
     private int CreateUser;
 
     @Column(name="ModifyUser")
-    private int ModifyUser;
+    private Integer ModifyUser;
 
     @OneToMany(mappedBy="department")
     private Set<Employee> employees;
@@ -89,11 +89,11 @@ public class Department implements Serializable{
         CreateUser = createUser;
     }
 
-    public int getModifyUser() {
+    public Integer getModifyUser() {
         return ModifyUser;
     }
 
-    public void setModifyUser(int modifyUser) {
+    public void setModifyUser(Integer modifyUser) {
         ModifyUser = modifyUser;
     }
 

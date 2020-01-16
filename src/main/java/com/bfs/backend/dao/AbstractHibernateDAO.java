@@ -30,21 +30,21 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
     protected final void setClazz(final Class<T> clazzToSet) {
         clazz = clazzToSet;
     }
-    public User1 getUserByNameOrEmailHibernate(String str, String nameOrEmail) {
-        Session session = getCurrentSession();
-        User1 user = null;
-        CriteriaBuilder cb = session.getCriteriaBuilder();
-        CriteriaQuery<User1> cq = cb.createQuery(User1.class);
-        Root<User1> userRoot = cq.from(User1.class);
-        cq.select(userRoot);
-        cq.where(cb.equal(userRoot.get(nameOrEmail), str));
-        List<User1> users = session.createQuery(cq).getResultList();
-        System.out.println(users);
-        if (users.size() != 0) {
-            user = users.get(0);
-        }
-        return user;
-    }
+//    public User1 getUserByNameOrEmailHibernate(String str, String nameOrEmail) {
+//        Session session = getCurrentSession();
+//        User1 user = null;
+//        CriteriaBuilder cb = session.getCriteriaBuilder();
+//        CriteriaQuery<User1> cq = cb.createQuery(User1.class);
+//        Root<User1> userRoot = cq.from(User1.class);
+//        cq.select(userRoot);
+//        cq.where(cb.equal(userRoot.get(nameOrEmail), str));
+//        List<User1> users = session.createQuery(cq).getResultList();
+//        System.out.println(users);
+//        if (users.size() != 0) {
+//            user = users.get(0);
+//        }
+//        return user;
+//    }
 
     public UserInternalPersonnel testSomeCandidate(){
 //        String sDate1="12/01/2020 21:03:04";

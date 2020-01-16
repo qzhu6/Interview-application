@@ -59,7 +59,7 @@ public class InterviewType implements Serializable{
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="CreatedDate")
+    @Column(name="CreateDate")
     private Date CreateDate;
 //    public Date getCreateDate(){return CreateDate;}
 //    public void setCreateDate(Date createDate){this.CreateDate=createDate;}
@@ -85,7 +85,7 @@ public class InterviewType implements Serializable{
 //    }
 
     @Column(name="ModifyUser")
-    private int ModifyUser;
+    private Integer ModifyUser;
 //    public int getModifyUser() {
 //        return ModifyUser;
 //    }
@@ -100,5 +100,26 @@ public class InterviewType implements Serializable{
     }
     public void setCandidateInterviewSet(Set<CandidateInterview> candidateInterviewSet) {
         this.candidateInterviewSet = candidateInterviewSet;
+    }
+
+    public InterviewType(Integer ID, String InterviewTypeName, String InterviewTypeDescription, Integer PositionID, Integer Sequence, Integer DefaultInterviewerEmployeeID, Date CreateDate, Date ModifyDate, Integer CreateUser, Integer ModifyUser){
+
+        this.ID = ID;
+        this.InterviewTypeName = InterviewTypeName;
+        this.InterviewTypeDescription = InterviewTypeDescription;
+        this.PositionID = PositionID;
+        this.Sequence = Sequence;
+        this.DefaultInterviewerEmployeeID = DefaultInterviewerEmployeeID;
+        this.CreateDate = CreateDate;
+        this.ModifyDate = ModifyDate;
+        this.CreateUser = CreateUser;
+        if(ModifyUser == null) {
+            this.ModifyUser = -1;
+        }else{
+            this.ModifyUser = ModifyUser;
+        }
+    }
+
+    public InterviewType() {
     }
 }

@@ -35,7 +35,7 @@ public class User implements Serializable{
     private int Password;
 
     @Column(name="InternalPersonnelID")
-    private int InternalPersonnelID;
+    private Integer InternalPersonnelID;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -47,8 +47,8 @@ public class User implements Serializable{
     @Column(name="ModifyDate")
     private Date ModifyDate;
 
-    @OneToOne(mappedBy = "user")
-    private InternalPersonnel internalPersonnel;
+//    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+//    private InternalPersonnel internalPersonnel;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<UserRole> userRole = new HashSet<UserRole>();
@@ -77,11 +77,11 @@ public class User implements Serializable{
         Password = password;
     }
 
-    public int getInternalPersonnelID() {
+    public Integer getInternalPersonnelID() {
         return InternalPersonnelID;
     }
 
-    public void setInternalPersonnelID(int internalPersonnelID) {
+    public void setInternalPersonnelID(Integer internalPersonnelID) {
         InternalPersonnelID = internalPersonnelID;
     }
 
@@ -101,11 +101,11 @@ public class User implements Serializable{
         ModifyDate = modifyDate;
     }
 
-    public InternalPersonnel getInternalPersonnel() {
-        return internalPersonnel;
-    }
-
-    public void setInternalPersonnel(InternalPersonnel internalPersonnel) {
-        this.internalPersonnel = internalPersonnel;
-    }
+//    public InternalPersonnel getInternalPersonnel() {
+//        return internalPersonnel;
+//    }
+//
+//    public void setInternalPersonnel(InternalPersonnel internalPersonnel) {
+//        this.internalPersonnel = internalPersonnel;
+//    }
 }
