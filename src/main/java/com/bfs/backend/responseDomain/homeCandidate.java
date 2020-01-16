@@ -1,32 +1,42 @@
 package com.bfs.backend.responseDomain;
 
-import javax.persistence.Column;
 import java.util.Date;
 
 public class homeCandidate implements java.io.Serializable {
     public homeCandidate(){ }
-    public homeCandidate(Date interviewStartDateTime, double interviewDuration, String firstName, String lastName, String interviewerName,
-                         String cellPhone , String positionName,  String resumeFileLocation,
-                         String resource){
+    public homeCandidate(Date interviewStartDateTime, double interviewDuration, String firstName, String lastName, String interviewerFirstName, String interviewerLastName,
+                         String cellPhone , String positionName,  String resumeFileLocation){
 
-        super();
         this.InterviewStartDateTime=interviewStartDateTime;
         this.InterviewDuration=interviewDuration;
         this.FirstName=firstName;
         this.LastName=lastName;
-        this.InterviewerName=interviewerName;
+        this.InterviewerFirstName = interviewerFirstName;
+        this.InterviewerLastName=interviewerLastName;
         this.CellPhone=cellPhone;
         this.PositionName=positionName;
         this.ResumeFileLocation=resumeFileLocation;
-        this.Resource=resource;
     }
 
-    private Date InterviewStartDateTime;
+//    public homeCandidate( String firstName, String lastName, String ifirstName, String ilastName,
+//                         String cellPhone , String positionName,  String resumeFileLocation){
+////
+////        super();
+////        this.InterviewStartDateTime=interviewStartDateTime;
+////        this.InterviewDuration=interviewDuration;
+//        this.FirstName=firstName;
+//        this.LastName=lastName;
+//        this.InterviewerFirstName = InterviewerifirstName;
+//        this.InterviewerLastName=lastName;
+//        this.CellPhone=cellPhone;
+//        this.PositionName=positionName;
+//        this.ResumeFileLocation=resumeFileLocation;
+//    }
 
+    private Date InterviewStartDateTime;
     public Date getInterviewStartDateTime() {
         return InterviewStartDateTime;
     }
-
     public void setInterviewStartDateTime(Date interviewStartDateTime) {
         this.InterviewStartDateTime = interviewStartDateTime;
     }
@@ -39,6 +49,10 @@ public class homeCandidate implements java.io.Serializable {
         this.InterviewDuration = interviewDuration;
     }
 
+    private String InterviewerFirstName;
+    public String getInterviewerFirstName(){return InterviewerFirstName;}
+    public void setInterviewerFirstName(String interviewerFirstName){this.InterviewerFirstName=interviewerFirstName;}
+
     private String FirstName;
     public String getFirstName(){return FirstName;}
     public void setFirstName(String firstName){this.FirstName=firstName;}
@@ -47,13 +61,10 @@ public class homeCandidate implements java.io.Serializable {
     public String getLastName(){return LastName;}
     public void setLastName(String lastName){this.LastName=lastName;}
 
-    private String InterviewerName;
-    public String getInterviewerName() {
-        return InterviewerName;
-    }
-    public void setInterviewerName(String interviewerName){
-        this.InterviewerName = interviewerName;
-    }
+    private String InterviewerLastName;
+    public String getInterviewerLastName(){return InterviewerLastName;}
+    public void setInterviewerLastName(String interviewerLastName){this.InterviewerLastName=interviewerLastName;}
+
 
     private String CellPhone;
     public String getCellPhone(){return CellPhone;}
@@ -67,7 +78,4 @@ public class homeCandidate implements java.io.Serializable {
     public String getResumeFileLocation(){return ResumeFileLocation;}
     public void setResumeFileLocation(String resumeFileLocation){this.ResumeFileLocation=resumeFileLocation;}
 
-    private String Resource;
-    public String getResource(){return Resource;}
-    public void setResource(String resource){this.Resource=resource;}
 }
