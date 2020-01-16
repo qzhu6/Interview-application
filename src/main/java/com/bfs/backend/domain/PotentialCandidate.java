@@ -125,7 +125,7 @@ public class PotentialCandidate implements Serializable {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="CreatedDate")
+    @Column(name="CreateDate")
     private Date CreateDate;
     public Date getCreateDate(){return CreateDate;}
     public void setCreateDate(Date createDate){this.CreateDate=createDate;}
@@ -151,11 +151,11 @@ public class PotentialCandidate implements Serializable {
     }
 
     @Column(name="ModifyUser")
-    private int ModifyUser;
-    public int getModifyUser() {
+    private Integer ModifyUser;
+    public Integer getModifyUser() {
         return ModifyUser;
     }
-    public void setModifyUser(int modifyUser) {
+    public void setModifyUser(Integer modifyUser) {
         this.ModifyUser = modifyUser;
     }
 
@@ -209,5 +209,30 @@ public class PotentialCandidate implements Serializable {
 
     public void setEmailTemplateID(int emailTemplateID) {
         EmailTemplateID = emailTemplateID;
+    }
+
+    public PotentialCandidate(Integer ID, String FirstName, String MiddleName, String LastName, String Email, String CellPhone, String ResumeFileLocation, Integer SendStatusID, Integer RecruiterEmployeeID, Integer PositionID, String Comments, Boolean ReachoutFlag, Boolean ActiveFlag, Integer EmailTemplateID, Date CreateDate, Date ModifyDate, Integer CreateUser, Integer ModifyUser, String Resource) {
+        this.ID = ID;
+        this.FirstName = FirstName;
+        this.MiddleName = MiddleName;
+        this.LastName = LastName;
+        this.Email = Email;
+        this.CellPhone = CellPhone;
+        this.ResumeFileLocation = ResumeFileLocation;
+        this.SendStatusID = SendStatusID;
+        this.RecruiterEmployeeID = RecruiterEmployeeID;
+        this.PositionID = PositionID;
+        this.Comments = Comments;
+        this.ReachoutFlag = ReachoutFlag;
+        this.ActiveFlag = ActiveFlag;
+        this.EmailTemplateID = EmailTemplateID;
+        this.CreateDate = CreateDate;
+        this.ModifyDate = ModifyDate;
+        this.CreateUser = CreateUser;
+        this.ModifyUser = ModifyUser;
+        this.Resource = Resource;
+    }
+
+    public PotentialCandidate() {
     }
 }

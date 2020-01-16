@@ -2,13 +2,11 @@ package com.bfs.backend;
 
 
 import com.bfs.backend.dao.CandidateDAO;
-import com.bfs.backend.domain.RecruitingTesting;
+import com.bfs.backend.dao.PositionDAO;
+import com.bfs.backend.domain.*;
 import com.bfs.backend.responseDomain.Interview;
-import com.bfs.backend.service.InterviewService;
-import com.bfs.backend.service.UserService;
+import com.bfs.backend.service.*;
 import com.bfs.backend.config.HibernateConfig;
-import com.bfs.backend.domain.UserInternalPersonnel;
-import com.bfs.backend.service.UserInternalPersonnelService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -29,8 +27,30 @@ public class AuthServerApplication {
 //        SpringApplication.run(AuthServerApplication.class, args);
 
     public static void main(String[] args) {
-        SpringApplication.run(AuthServerApplication.class, args);
-//        ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
+//        SpringApplication.run(AuthServerApplication.class, args);
+        ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
+        PositionService positionService = context.getBean(PositionService.class);
+        InterviewTypeService interviewTypeService = context.getBean(InterviewTypeService.class);
+        EmployeeService employeeService = context.getBean(EmployeeService.class);
+        PotentialCandidateService potentialCandidateService = context.getBean(PotentialCandidateService.class);
+        Position positionObject = positionService.getPositionObject("BackEnd");
+        InterviewType interviewType = interviewTypeService.getInterviewType(positionObject, 1);
+        Employee employeeObject = employeeService.getEmployee("James", "Cui");
+        PotentialCandidate potentialCandidate = potentialCandidateService.getPotentialCandidate("Wes", "Zhu");
+        System.out.println(potentialCandidate.getID());
+        System.out.println(potentialCandidate.getEmail());
+        System.out.println(interviewType.getID());
+        System.out.println(interviewType.getInterviewTypeName());
+        System.out.println(interviewType.getInterviewTypeDescription());
+        System.out.println(employeeObject.getID());
+        System.out.println(employeeObject.getTitle());
+
+//        System.out.println(interviewType.getInterviewTypeName());
+//        System.out.println(interviewType.getInterviewTypeDescription());
+//        System.out.println(interviewType.getSequence());
+
+
+//        System.out.println(positionObject.getID());
 //
 //        InterviewService interviewService = context.getBean(InterviewService.class);
 //        List<Interview> interview = interviewService.getListInterview();

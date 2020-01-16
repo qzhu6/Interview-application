@@ -36,7 +36,7 @@ public class SendStatus implements Serializable {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="CreatedDate")
+    @Column(name="CreateDate")
     private Date CreateDate;
     public Date getCreateDate(){return CreateDate;}
     public void setCreateDate(Date createDate){this.CreateDate=createDate;}
@@ -62,11 +62,11 @@ public class SendStatus implements Serializable {
     }
 
     @Column(name="ModifyUser")
-    private int ModifyUser;
-    public int getModifyUser() {
+    private Integer ModifyUser;
+    public Integer getModifyUser() {
         return ModifyUser;
     }
-    public void setModifyUser(int modifyUser) {
+    public void setModifyUser(Integer modifyUser) {
         this.ModifyUser = modifyUser;
     }
 

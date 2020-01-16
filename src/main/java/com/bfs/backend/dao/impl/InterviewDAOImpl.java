@@ -11,6 +11,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -53,5 +54,9 @@ public class InterviewDAOImpl extends AbstractHibernateDAO<Interview> implements
                 cb.equal(eRoot.get("InternalPersonnelID"), ipRoot.get("ID")));
         list = session.createQuery(cq).getResultList();
         return list;
+    }
+
+    public void insertInterview(Date InterviewStartDateTime, double InterviewDuration, String PositionName, String CandidateFirstName, String CandidateLastName, double OverallRating, String InterviewerFirstName, String InterviewerMiddleName, String InterviewerLastName, String Comments, String ResumeFileLocation, int Sequence, String InterviewStatus){
+
     }
 }
