@@ -125,7 +125,7 @@ public class PotentialCandidate implements Serializable {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="CreatedDate")
+    @Column(name="CreateDate")
     private Date CreateDate;
     public Date getCreateDate(){return CreateDate;}
     public void setCreateDate(Date createDate){this.CreateDate=createDate;}
@@ -168,5 +168,6 @@ public class PotentialCandidate implements Serializable {
         this.candidateInterviewSet = candidateInterviewSet;
     }
 
-
+    @Column(name="Resource")
+    private String Resource;
 }

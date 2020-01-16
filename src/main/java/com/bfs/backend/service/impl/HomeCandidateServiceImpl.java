@@ -23,5 +23,4 @@ public class HomeCandidateServiceImpl implements HomeCandidateService {
     public List<homeCandidate> getHomeCandidate(int id){
         return candidateDAO.getHomeCandidate(id);
     }
-
 }

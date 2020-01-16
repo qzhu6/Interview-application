@@ -1,10 +1,10 @@
-package com.bfs.backend.service;
+package com.bfs.backend.dao;
 
 import com.bfs.backend.responseDomain.homeCandidate;
 import com.bfs.backend.responseDomain.myCandidate;
 
 import java.util.List;
 
-public interface HomeCandidateService {
-    List<homeCandidate> getHomeCandidate(int id);
+public interface MyCandidateDAO {
+    List<myCandidate> getMyCandidate(int userID);
 }

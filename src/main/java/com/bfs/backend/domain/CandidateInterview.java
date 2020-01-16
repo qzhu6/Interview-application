@@ -48,7 +48,7 @@ public class CandidateInterview implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name="InterviewEmplID",insertable=false, updatable=false)
+    @JoinColumn(name="InterviewerEmplID",insertable=false, updatable=false)
     private Employee employee;
     public Employee getInterviewEmplID() {
         return employee;
