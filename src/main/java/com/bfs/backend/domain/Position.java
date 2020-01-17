@@ -102,5 +102,9 @@ public class Position implements Serializable {
         }
     }
 
+    public Position(Integer ID, String PositionName){
+        this.ID = ID;
+        this.PositionName = PositionName;
+    }
 
 }

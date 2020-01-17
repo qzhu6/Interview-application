@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class PositionServiceImpl implements PositionService {
     private PositionDAO positionDAO;
@@ -20,5 +22,11 @@ public class PositionServiceImpl implements PositionService {
     @Override
     public Position getPositionObject(String PositionName){
         return positionDAO.getPositionByName(PositionName);
+    }
+
+    @Transactional
+    @Override
+    public List<String> getStringListPositionName(){
+        return positionDAO.listPosition();
     }
 }

@@ -1,6 +1,8 @@
 package com.bfs.backend.controller;
 
+import com.bfs.backend.domain.EmailTemplate;
 import com.bfs.backend.responseDomain.Interview;
+import com.bfs.backend.service.EmailTemplateService;
 import com.bfs.backend.service.InterviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,35 +15,61 @@ import java.util.stream.Collectors;
 @RestController
 public class InterviewController {
 
+    private String cuiBo;
     private InterviewService interviewService;
+    private EmailTemplateService emailTemplateService;
 
     @Autowired
     public void setInterviewService(InterviewService interviewService){
         this.interviewService = interviewService;
     }
 
-    @GetMapping("/interview")
+    @Autowired
+    public void setEmailTemplateService(EmailTemplateService emailTemplateService){
+        this.emailTemplateService = emailTemplateService;
+    }
+
+    @GetMapping("/Interview")
     public List<List<Interview>> getInterview(){
-        List<Interview> interview = interviewService.getListInterview();
-//        List<Interview> interview = interviewDao.getInterview();
-        Comparator<Interview> compareByName = Comparator.comparing(Interview::getIntervieweeFullName).thenComparing(Interview::getPositionName).thenComparing(Interview::getSequence);
-        List<Interview> sortedInterview = interview.stream().sorted(compareByName).collect(Collectors.toList());
-        List<List<Interview>> listBoCui = new ArrayList<List<Interview>>();
-        List<Interview> listNoBoCui = new ArrayList<Interview>();
-        for (int i = 0; i < sortedInterview.size(); i++) {
-            if (i == 0) {
-                listNoBoCui.add(sortedInterview.get(i));
-            } else if (i != 0) {
-                if (!sortedInterview.get(i).getIntervieweeFullName().equals(sortedInterview.get(i - 1).getIntervieweeFullName()) && !sortedInterview.get(i).getPositionName().equals(sortedInterview.get(i - 1).getPositionName())) {
-                    listBoCui.add(listNoBoCui);
-                    listNoBoCui = new ArrayList<Interview>();
-                    listNoBoCui.add(sortedInterview.get(i));
-                } else {
-                    listNoBoCui.add(sortedInterview.get(i));
-                }
-            }
-        }
-        listBoCui.add(listNoBoCui);
+        List<List<Interview>> listBoCui = interviewService.getListInterview();
         return listBoCui;
+    }
+
+    @GetMapping("/ListPosition")
+    public List<String> getListPosition(){
+        return interviewService.getStringListPositionName();
+    }
+
+    @GetMapping("/ListInterviewByName")
+    public List<Interview> getListInterviewByName(){
+        return interviewService.getListInterviewByPositionName(cuiBo);
+    }
+
+    @GetMapping(value="/ListEmailTemplateName")
+    public List<String> getEmailTemplateName(){
+        List<String> listEmailTemplateName = emailTemplateService.getEmailTemplateName();
+        return listEmailTemplateName;
+    }
+
+
+    @GetMapping(value="/ListEmailTemplate")
+    public List<EmailTemplate> getEmailTemplate(){
+        List<EmailTemplate> listEmailTemplate = emailTemplateService.getEmailTemplateList();
+        return listEmailTemplate;
+    }
+
+    @PostMapping(value="/NewInterview")
+    public void getNewInterview(@RequestBody Interview interview){
+        interviewService.createNewInterview(interview);
+    }
+
+    @PostMapping(value="/PositionName")
+    public void getPositionName(@RequestBody String PositionName){
+        cuiBo = PositionName;
+    }
+
+    @PostMapping(value="/EmailTemplate")
+    public void getNewEmailTemplate(@RequestBody EmailTemplate EmailTemplate){
+        emailTemplateService.createEmailTemplate(EmailTemplate);
     }
 }
