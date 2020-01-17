@@ -21,4 +21,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee getEmployee(String FirstName, String LastName){
         return this.employeeDAO.getEmployeeByName(FirstName, LastName);
     }
+
+    @Override
+    @Transactional
+    public Employee getEmployeeByUserID(int userID){
+        return employeeDAO.getEmployeeByUserID(userID);
+    }
 }

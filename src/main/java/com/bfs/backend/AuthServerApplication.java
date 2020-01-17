@@ -2,6 +2,10 @@ package com.bfs.backend;
 
 
 import com.bfs.backend.dao.CandidateDAO;
+import com.bfs.backend.domain.RecruitingTesting;
+import com.bfs.backend.responseDomain.homeCandidate;
+import com.bfs.backend.service.AllCandidateService;
+import com.bfs.backend.service.HomeCandidateService;
 import com.bfs.backend.dao.PositionDAO;
 import com.bfs.backend.domain.*;
 import com.bfs.backend.responseDomain.Interview;
@@ -14,7 +18,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.text.ParseException;
+
 import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 import java.util.stream.Collectors;
 
 @SpringBootApplication(exclude= HibernateJpaAutoConfiguration.class)
@@ -24,14 +36,50 @@ public class AuthServerApplication {
 //    public static void main(String[] args) throws ParseException {
 //        SpringApplication.run(AuthServerApplication.class, args);
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws ParseException {
         SpringApplication.run(AuthServerApplication.class, args);
 //        ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
+//        EmailService ac=context.getBean(EmailService.class);
+//        System.out.println(ac.getEmailByName("BackEnd2").getID());
+
+//        List<Integer> Id = new ArrayList<Integer>();
+//        Id.add(1);
+//        Id.add(2);
+//        Id.add(3);
+//        Id.add(4);
+//        ac.UpdateEmployeeID(3,Id);
+
+//        UserInternalPersonnelService userInternalPersonnelService = context.getBean(UserInternalPersonnelService.class);
+//        UserInternalPersonnel userInternalPersonnel= userInternalPersonnelService.getUserTest();
+//        System.out.println(userInternalPersonnel.getFirstName());
+//        System.out.println(userInternalPersonnel.getUserName());
+//        System.out.println(userInternalPersonnel.getRoleName());
+//        System.out.println(userInternalPersonnel.getDescription());
+//
+//        RecruitingTesting recruitingTesting = userInternalPersonnelService.getRecruiting();
+//        System.out.println(recruitingTesting.getPositionName());
+//        System.out.println(recruitingTesting.getInterviewTypeDescription());
+//        System.out.println(recruitingTesting.getEmailSubject());
+//        System.out.println(recruitingTesting.getEmail());
+//        System.out.println(recruitingTesting.getSendDescription());
+
+//        HomeCandidateService homeCandidateService=context.getBean(HomeCandidateService.class);
+//        List<homeCandidate> hc = homeCandidateService.getHomeCandidate(4);
+//        for(homeCandidate item : hc){
+//            System.out.println(item.getFirstName());
+//            System.out.println(item.getLastName());
+//            System.out.println(item.getCellPhone());
+//            System.out.println(item.getInterviewerFirstName());
+//            System.out.println(item.getInterviewerLastName());
+//            System.out.println(item.getResumeFileLocation());
+//            System.out.println(item.getInterviewStartDateTime());
+//            System.out.println(item.getPositionName());
+//            System.out.println(item.getInterviewDuration());
+//    public static void main(String[] args) {
+////        SpringApplication.run(AuthServerApplication.class, args);
+//        ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
 //        PositionService positionService = context.getBean(PositionService.class);
-//        List<String> positionList = positionService.getStringListPositionName();
-//        for(String x: positionList){
-//            System.out.println(x);
-//        }
 //        InterviewTypeService interviewTypeService = context.getBean(InterviewTypeService.class);
 //        EmployeeService employeeService = context.getBean(EmployeeService.class);
 //        PotentialCandidateService potentialCandidateService = context.getBean(PotentialCandidateService.class);

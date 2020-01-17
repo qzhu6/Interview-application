@@ -4,6 +4,7 @@ import com.bfs.backend.dao.AbstractHibernateDAO;
 import com.bfs.backend.dao.EmployeeDAO;
 import com.bfs.backend.domain.Employee;
 import com.bfs.backend.domain.InternalPersonnel;
+import com.bfs.backend.domain.User;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -40,6 +41,24 @@ public class EmployeeDAOImpl extends AbstractHibernateDAO<Employee> implements E
 //        for(Employee e: employee){
 //            System.out.println("Hi");
 //        }
+        return employee;
+    }
+
+    @Override
+    public Employee getEmployeeByUserID(int userID){
+        Session session = getCurrentSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<Employee> cq = cb.createQuery(Employee.class);
+        Root<Employee> eRoot = cq.from(Employee.class);
+        Root<InternalPersonnel> ipRoot = cq.from(InternalPersonnel.class);
+        Root<User> uRoot = cq.from(User.class);
+        cq.select(eRoot);
+        cq.where(
+                cb.equal(ipRoot.get("ID"), eRoot.get("InternalPersonnelID")),
+                cb.equal(ipRoot.get("ID"), uRoot.get("InternalPersonnelID")),
+                cb.equal(uRoot.get("ID"), userID)
+        );
+        Employee employee = session.createQuery(cq).getResultList().get(0);
         return employee;
     }
 }
