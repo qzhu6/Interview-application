@@ -50,10 +50,10 @@ public class CandidateInterview implements Serializable {
     @ManyToOne
     @JoinColumn(name="InterviewerEmplID",insertable=false, updatable=false)
     private Employee employee;
-    public Employee getInterviewEmplID() {
+    public Employee getEmployee() {
         return employee;
     }
-    public void setInterviewEmplID(Employee employee) {
+    public void setEmployee(Employee employee) {
         this.employee = employee;
     }
 
@@ -85,11 +85,11 @@ public class CandidateInterview implements Serializable {
     }
 
     @Column(name="OverallRating")
-    private double OverallRating;
-    public double getOverallRating() {
+    private Double OverallRating;
+    public Double getOverallRating() {
         return OverallRating;
     }
-    public void setOverallRating(double overallRating) {
+    public void setOverallRating(Double overallRating) {
         this.OverallRating = overallRating;
     }
 

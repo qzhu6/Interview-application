@@ -36,7 +36,7 @@ public class EmployeeDAOImpl extends AbstractHibernateDAO<Employee> implements E
                 cb.equal(ipRoot.get("LastName"), LastName),
                 cb.equal(ipRoot.get("ID"), eRoot.get("InternalPersonnelID"))
         );
-        Employee employee = session.createQuery(cq).getResultList().get(0);
+        Employee employee = session.createQuery(cq).getSingleResult();
 //        List<Employee> employee = session.createQuery(cq).getResultList();
 //        for(Employee e: employee){
 //            System.out.println("Hi");

@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Interview implements Serializable {
-    private int ID;
+    private Integer ID;
     private Date InterviewStartDateTime;
     private double InterviewDuration;
     private String PositionName;
     private String IntervieweeFirstName;
     private String IntervieweeLastName;
-    private double OverallRating;
+    private Double OverallRating;
     private String InterviewerFirstName;
     private String InterviewerMiddleName;
     private String InterviewerLastName;
@@ -20,7 +20,7 @@ public class Interview implements Serializable {
     private String InterviewStatus;
     private String IntervieweeFullName;
 
-    public Interview(int ID, Date interviewStartDateTime, double interviewDuration, String positionName, String intervieweeFirstName, String intervieweeLastName, double overallRating, String interviewerFirstName, String interviewerMiddleName, String interviewerLastName, String comment, String resumeFileLocation, int sequence, String interviewStatus) {
+    public Interview(Integer ID, Date interviewStartDateTime, double interviewDuration, String positionName, String intervieweeFirstName, String intervieweeLastName, Double overallRating, String interviewerFirstName, String interviewerMiddleName, String interviewerLastName, String comment, String resumeFileLocation, int sequence, String interviewStatus) {
         this.ID = ID;
         InterviewStartDateTime = interviewStartDateTime;
         InterviewDuration = interviewDuration;
@@ -46,11 +46,11 @@ public class Interview implements Serializable {
     public Interview() {
     }
 
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 
@@ -94,11 +94,11 @@ public class Interview implements Serializable {
         IntervieweeLastName = intervieweeLastName;
     }
 
-    public double getOverallRating() {
+    public Double getOverallRating() {
         return OverallRating;
     }
 
-    public void setOverallRating(double overallRating) {
+    public void setOverallRating(Double overallRating) {
         OverallRating = overallRating;
     }
 

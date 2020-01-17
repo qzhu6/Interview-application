@@ -1,14 +1,14 @@
 package com.bfs.backend.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,11 +21,11 @@ public class EmailTemplate implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
-    private int ID;
-    public int getID() {
+    private Integer ID;
+    public Integer getID() {
         return ID;
     }
-    public void setID(int id) {
+    public void setID(Integer id) {
         this.ID = id;
     }
 
@@ -63,8 +63,8 @@ public class EmailTemplate implements Serializable {
     }
 
     @Column(name="CreateUser")
-    private int CreateUser;
-    public int getCreateUser() {
+    private Integer CreateUser;
+    public Integer getCreateUser() {
         return CreateUser;
     }
     public void setCreateUser(int createUser) {
@@ -80,13 +80,33 @@ public class EmailTemplate implements Serializable {
         this.ModifyUser = modifyUser;
     }
 
-    @OneToMany(mappedBy = "emailTemplate")
-    private Set<PotentialCandidate> potentialCandidateSet = new HashSet<PotentialCandidate>();
-    public Set<PotentialCandidate> getPotentialCandidateSet() {
+    @OneToMany(mappedBy = "emailTemplate", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<PotentialCandidate> potentialCandidateSet = new ArrayList<>();
+    public List<PotentialCandidate> getPotentialCandidateSet() {
         return potentialCandidateSet;
     }
-    public void GetPotentialCandidateSet(Set<PotentialCandidate> potentialCandidateSet) {
+    public void GetPotentialCandidateSet(List<PotentialCandidate> potentialCandidateSet) {
         this.potentialCandidateSet = potentialCandidateSet;
     }
 
+    public EmailTemplate(Integer ID, String EmailTemplateName, String EmailSubject, String EmailTemplateContent, Date CreateDate, Date ModifyDate, Integer CreateUser, Integer ModifyUser) {
+        this.ID = ID;
+        this.EmailTemplateName = EmailTemplateName;
+        this.EmailSubject = EmailSubject;
+        this.EmailTemplateContent = EmailTemplateContent;
+        this.CreateDate = CreateDate;
+        this.ModifyDate = ModifyDate;
+        this.CreateUser = CreateUser;
+        this.ModifyUser = ModifyUser;
+    }
+
+    public EmailTemplate(Integer ID, String EmailTemplateName){
+        this.ID = ID;
+        this.EmailTemplateName = EmailTemplateName;
+    }
+
+    public EmailTemplate(){
+
+    }
 }

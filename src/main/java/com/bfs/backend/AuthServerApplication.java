@@ -18,11 +18,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.text.ParseException;
+
+import java.util.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 @SpringBootApplication(exclude= HibernateJpaAutoConfiguration.class)
@@ -31,6 +35,7 @@ public class AuthServerApplication {
 
 //    public static void main(String[] args) throws ParseException {
 //        SpringApplication.run(AuthServerApplication.class, args);
+
 
     public static void main(String[] args) throws ParseException {
         SpringApplication.run(AuthServerApplication.class, args);
@@ -78,6 +83,7 @@ public class AuthServerApplication {
 //        InterviewTypeService interviewTypeService = context.getBean(InterviewTypeService.class);
 //        EmployeeService employeeService = context.getBean(EmployeeService.class);
 //        PotentialCandidateService potentialCandidateService = context.getBean(PotentialCandidateService.class);
+
 //        Position positionObject = positionService.getPositionObject("BackEnd");
 //        InterviewType interviewType = interviewTypeService.getInterviewType(positionObject, 1);
 //        Employee employeeObject = employeeService.getEmployee("James", "Cui");
@@ -98,6 +104,13 @@ public class AuthServerApplication {
 //        System.out.println(positionObject.getID());
 //
 //        InterviewService interviewService = context.getBean(InterviewService.class);
+//        Interview interview = new Interview(null, new Date(),2.0, "FrontEnd", "Bo", "Cui", null, "James", null, "Cui", null, "Testing resume hehe", 1, "Pending");
+//        interviewService.createNewInterview(interview);
+//        List<Interview> lInterview = interviewService.getListInterviewByPositionName("BackEnd");
+//        for(Interview x: lInterview){
+//            System.out.println(x.getID());
+//            System.out.println(x.getPositionName());
+//        }
 //        List<Interview> interview = interviewService.getListInterview();
 ////        List<Interview> interview = interviewDao.getInterview();
 //        Comparator<Interview> compareByName = Comparator.comparing(Interview::getIntervieweeFullName).thenComparing(Interview::getPositionName).thenComparing(Interview::getSequence);
