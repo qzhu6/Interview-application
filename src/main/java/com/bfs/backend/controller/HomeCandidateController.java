@@ -2,7 +2,7 @@ package com.bfs.backend.controller;
 
 import com.bfs.backend.responseDomain.homeCandidate;
 import com.bfs.backend.service.HomeCandidateService;
-import com.bfs.backend.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

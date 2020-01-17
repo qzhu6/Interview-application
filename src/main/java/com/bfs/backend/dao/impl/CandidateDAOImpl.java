@@ -2,7 +2,7 @@ package com.bfs.backend.dao.impl;
 
 import com.bfs.backend.dao.AbstractHibernateDAO;
 import com.bfs.backend.dao.CandidateDAO;
-import com.bfs.backend.dao.UserDAO;
+
 import com.bfs.backend.domain.*;
 import com.bfs.backend.responseDomain.homeCandidate;
 import org.hibernate.Session;

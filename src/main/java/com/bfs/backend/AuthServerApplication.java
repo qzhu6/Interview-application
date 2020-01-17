@@ -35,7 +35,9 @@ public class AuthServerApplication {
     public static void main(String[] args) throws ParseException {
         SpringApplication.run(AuthServerApplication.class, args);
 //        ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
-//        AllCandidateService ac=context.getBean(AllCandidateService.class);
+//        EmailService ac=context.getBean(EmailService.class);
+//        System.out.println(ac.getEmailByName("BackEnd2").getID());
+
 //        List<Integer> Id = new ArrayList<Integer>();
 //        Id.add(1);
 //        Id.add(2);

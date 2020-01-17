@@ -233,6 +233,7 @@ public class PotentialCandidate implements Serializable {
         this.ModifyUser = ModifyUser;
         this.Resource = Resource;
     }
+
     public PotentialCandidate() {
     }
 }
