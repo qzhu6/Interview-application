@@ -53,8 +53,8 @@ public class InterviewServiceImpl implements InterviewService {
 
     @Transactional
     @Override
-    public List<List<Interview>> getListInterview(String PositionName){
-        List<Interview> interview = interviewDao.getInterview(PositionName);
+    public List<List<Interview>> getListInterview(){
+        List<Interview> interview = interviewDao.getInterview();
         Comparator<Interview> compareByName = Comparator.comparing(Interview::getIntervieweeFullName).thenComparing(Interview::getPositionName).thenComparing(Interview::getSequence);
         List<Interview> sortedInterview = interview.stream().sorted(compareByName).collect(Collectors.toList());
         List<List<Interview>> listBoCui = new ArrayList<List<Interview>>();

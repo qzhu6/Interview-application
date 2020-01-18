@@ -20,6 +20,8 @@ public class PotentialCandidateDAOImpl extends AbstractHibernateDAO<PotentialCan
 
     @Override
     public PotentialCandidate getPotentialCandidateByName(String FirstName, String LastName) {
+        System.out.println(FirstName);
+        System.out.println(LastName);
         Session session = getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<PotentialCandidate> cq = cb.createQuery(PotentialCandidate.class);
