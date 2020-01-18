@@ -1,7 +1,5 @@
 package com.bfs.backend.responseDomain;
 
-import lombok.ToString;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -166,26 +164,5 @@ public class Interview implements Serializable {
 
     public void setIntervieweeFullName() {
         IntervieweeFullName = IntervieweeFirstName + " " + IntervieweeLastName;
-    }
-
-    @Override
-    public String toString() {
-        return "Interview{" +
-                "ID=" + ID +
-                ", InterviewStartDateTime=" + InterviewStartDateTime +
-                ", InterviewDuration=" + InterviewDuration +
-                ", PositionName='" + PositionName + '\'' +
-                ", IntervieweeFirstName='" + IntervieweeFirstName + '\'' +
-                ", IntervieweeLastName='" + IntervieweeLastName + '\'' +
-                ", OverallRating=" + OverallRating +
-                ", InterviewerFirstName='" + InterviewerFirstName + '\'' +
-                ", InterviewerMiddleName='" + InterviewerMiddleName + '\'' +
-                ", InterviewerLastName='" + InterviewerLastName + '\'' +
-                ", Comment='" + Comment + '\'' +
-                ", ResumeFileLocation='" + ResumeFileLocation + '\'' +
-                ", Sequence=" + Sequence +
-                ", InterviewStatus='" + InterviewStatus + '\'' +
-                ", IntervieweeFullName='" + IntervieweeFullName + '\'' +
-                '}';
     }
 }
