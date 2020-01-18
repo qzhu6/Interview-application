@@ -26,6 +26,7 @@ public class CandidateInterview implements Serializable {
         this.ID = id;
     }
 
+
     @ManyToOne
     @JoinColumn(name="PotentialCandidateID",insertable=false, updatable=false)
     private PotentialCandidate potentialCandidate;
@@ -47,7 +48,7 @@ public class CandidateInterview implements Serializable {
     }
 
     @ManyToOne
-    @JoinColumn(name="InterviewEmplID",insertable=false, updatable=false)
+    @JoinColumn(name="InterviewerEmplID",insertable=false, updatable=false)
     private Employee employee;
     public Employee getEmployee() {
         return employee;
@@ -58,33 +59,27 @@ public class CandidateInterview implements Serializable {
 
     @Column(name="PotentialCandidateID")
     private int PotentialCandidateID;
-
     public int getPotentialCandidateID() {
         return PotentialCandidateID;
     }
-
     public void setPotentialCandidateID(int potentialCandidateID) {
         PotentialCandidateID = potentialCandidateID;
     }
 
     @Column(name="InterviewTypeID")
     private int InterviewTypeID;
-
     public int getInterviewTypeID() {
         return InterviewTypeID;
     }
-
     public void setInterviewTypeID(int interviewTypeID) {
         InterviewTypeID = interviewTypeID;
     }
 
     @Column(name="InterviewerEmplID")
     private int InterviewerEmplID;
-
     public int getInteviewerEmplID() {
         return InterviewerEmplID;
     }
-
     public void setInteviewerEmplID(int inteviewerEmplID) {
         InterviewerEmplID = inteviewerEmplID;
     }
@@ -138,11 +133,9 @@ public class CandidateInterview implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="CreateDate")
     private Date CreateDate;
-
     public Date getCreateDate() {
         return CreateDate;
     }
-
     public void setCreateDate(Date createDate) {
         this.CreateDate = createDate;
     }
