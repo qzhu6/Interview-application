@@ -88,7 +88,7 @@ public class InterviewServiceImpl implements InterviewService {
         Position position = positionDAO.getPositionByName(interview.getPositionName());
         InterviewType interviewType = interviewTypeDAO.getInterviewType(position, interview.getSequence());
         PotentialCandidate potentialCandidate = potentialCandidateDAO.getPotentialCandidateByName(interview.getIntervieweeFirstName(), interview.getIntervieweeLastName());
-        Employee employee = employeeDAO.getEmployeeByName(interview.getInterviewerFirstName(), interview.getIntervieweeLastName());
+        Employee employee = employeeDAO.getEmployeeByName(interview.getInterviewerFirstName(), interview.getInterviewerLastName());
         interviewDao.createInterview(interview, potentialCandidate, employee, interviewType);
     }
 

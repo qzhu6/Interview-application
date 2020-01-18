@@ -49,7 +49,7 @@ public class CandidateDAOImpl extends AbstractHibernateDAO implements CandidateD
                 cb.equal(cRoot.get("employee"), eRoot.get("ID")),
                 cb.equal(eRoot.get("internalPersonnel"), iRoot.get("ID")),
                 cb.equal(pRoot.get("position"), positionRoot.get("ID")),
-                cb.equal(iRoot.get("ID"), uRoot.get("internalPersonnel")),
+                cb.equal(iRoot.get("ID"), uRoot.get("InternalPersonnelID")),
                 cb.or(userMatch, createUserMatch));
             List<homeCandidate> list = session.createQuery(hc).getResultList();
         return list;

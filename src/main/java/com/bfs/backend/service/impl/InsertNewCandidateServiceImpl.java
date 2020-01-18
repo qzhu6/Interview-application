@@ -54,6 +54,7 @@ public class InsertNewCandidateServiceImpl implements InsertNewCandidateService 
         pc.setCellPhone(allCandidate.getCellPhone());
         pc.setResumeFileLocation(allCandidate.getResumeFileLocation());
         pc.setSendStatusID(1);
+        pc.setActiveFlag(true);
         pc.setRecruiterEmployeeID(employeeService.getEmployeeByUserID(userId).getID());
         pc.setPositionID(positionService.getPositionObject(allCandidate.getPositionName()).getID());
         pc.setComments(allCandidate.getComment());

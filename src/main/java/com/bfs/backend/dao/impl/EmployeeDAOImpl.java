@@ -22,8 +22,8 @@ public class EmployeeDAOImpl extends AbstractHibernateDAO<Employee> implements E
 
     @Override
     public Employee getEmployeeByName(String FirstName, String LastName){
-//        System.out.println(FirstName);
-//        System.out.println(LastName);
+        System.out.println(FirstName);
+        System.out.println(LastName);
 //        return null;
         Session session = getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -37,10 +37,7 @@ public class EmployeeDAOImpl extends AbstractHibernateDAO<Employee> implements E
                 cb.equal(ipRoot.get("ID"), eRoot.get("InternalPersonnelID"))
         );
         Employee employee = session.createQuery(cq).getSingleResult();
-//        List<Employee> employee = session.createQuery(cq).getResultList();
-//        for(Employee e: employee){
-//            System.out.println("Hi");
-//        }
+
         return employee;
     }
 
