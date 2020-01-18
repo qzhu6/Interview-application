@@ -5,6 +5,7 @@ import com.bfs.backend.dao.CandidateDAO;
 import com.bfs.backend.dao.PositionDAO;
 import com.bfs.backend.domain.*;
 import com.bfs.backend.responseDomain.Interview;
+import com.bfs.backend.responseDomain.myCandidate;
 import com.bfs.backend.service.*;
 import com.bfs.backend.config.HibernateConfig;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +18,7 @@ import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@SpringBootApplication(exclude= HibernateJpaAutoConfiguration.class)
+@SpringBootApplication(exclude=HibernateJpaAutoConfiguration.class)
 public class AuthServerApplication {
 
 
@@ -27,6 +28,10 @@ public class AuthServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(AuthServerApplication.class, args);
 //        ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
+//        myCandidateService myCandidateService = context.getBean(com.bfs.backend.service.myCandidateService.class);
+//        List<myCandidate> listCandidate = new ArrayList<myCandidate>();
+//        listCandidate.add(new myCandidate(1, "Bo", "Cui", "cuibobo@gg.com", "BackEnd", null, new Date()));
+//        myCandidateService.updateCandidate(listCandidate);
 //        PositionService positionService = context.getBean(PositionService.class);
 //        List<String> positionList = positionService.getStringListPositionName();
 //        for(String x: positionList){
