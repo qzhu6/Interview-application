@@ -60,7 +60,6 @@ public class InterviewController {
 
     @PostMapping(value="/NewInterview")
     public void getNewInterview(@RequestBody Interview interview){
-        System.out.println(interview);
         interviewService.createNewInterview(interview);
     }
 

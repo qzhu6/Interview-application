@@ -1,4 +1,3 @@
-
 //package com.bfs.backend.service.impl;
 //
 //import com.bfs.backend.dao.CandidateDAO;
@@ -19,19 +18,12 @@
 //        this.userDAO = userDAO;
 //    }
 //
-//
-//    @Transactional
-//    @Override
-//    public User1 getUserByNameOrEmail(String str, String nameOrEmail)
-//    {
-//        return userDAO.getUserByNameOrEmail(str, nameOrEmail);
+//    @Autowired
+//    public void setCandidateDAO(CandidateDAO candidateDao){
+//        this.candidateDao = candidateDao;
 //    }
 //
-//    @Override
-//    public void testSomeCandidate() {
-//    }
-//    }
-
+//
 //    @Transactional
 //    @Override
 //    public User1 getUserByNameOrEmail(String str, String nameOrEmail)

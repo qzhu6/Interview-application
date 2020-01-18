@@ -44,6 +44,8 @@ public class PositionDAOImpl extends AbstractHibernateDAO<Position> implements P
         List<String> positionStringList = new ArrayList<String>();
         for(Position x: positionList){
             positionStringList.add(x.getPositionName());
+//            System.out.println(x.getID());
+//            System.out.println(x.getPositionName());
         }
         return positionStringList;
     }
