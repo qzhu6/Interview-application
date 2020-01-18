@@ -56,7 +56,7 @@ public class AuthServerApplication {
 //        System.out.println(positionObject.getID());
 //
 //        InterviewService interviewService = context.getBean(InterviewService.class);
-//        Interview interview = new Interview(null, new Date(),2.0, "FrontEnd", "Bo", "Cui", null, "James", null, "Cui", null, "Testing resume hehe", 1, "Pending");
+       Interview interview = new Interview(null, new Date(),2.0, "FrontEnd", "Bo", "Cui", null, "James", null, "Cui", null, "Testing resume hehe", 1, "Pending");
 //        interviewService.createNewInterview(interview);
 //        List<Interview> lInterview = interviewService.getListInterviewByPositionName("BackEnd");
 //        for(Interview x: lInterview){

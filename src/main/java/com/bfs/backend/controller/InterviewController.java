@@ -31,7 +31,7 @@ public class InterviewController {
 
     @GetMapping("/Interview")
     public List<List<Interview>> getInterview(){
-        List<List<Interview>> listBoCui = interviewService.getListInterview();
+        List<List<Interview>> listBoCui = interviewService.getListInterview("BackEnd");
         return listBoCui;
     }
 
