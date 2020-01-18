@@ -32,7 +32,6 @@ import java.util.stream.Collectors;
 @SpringBootApplication(exclude= HibernateJpaAutoConfiguration.class)
 public class AuthServerApplication {
 
-
 //    public static void main(String[] args) throws ParseException {
 //        SpringApplication.run(AuthServerApplication.class, args);
 
