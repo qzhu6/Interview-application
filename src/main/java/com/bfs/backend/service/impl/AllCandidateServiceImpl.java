@@ -44,6 +44,7 @@ public class AllCandidateServiceImpl implements AllCandidateService {
     public void UpdateEmployeeID(int userID, List<Integer> candidateID){
         for(Integer candidate : candidateID){
             allCandidateDAO.UpdateEmployeeID(userID, candidate);
+            System.out.println(candidate);
         }
     }
 }

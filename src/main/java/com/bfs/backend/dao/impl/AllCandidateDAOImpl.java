@@ -6,6 +6,7 @@ import com.bfs.backend.dao.CandidateDAO;
 import com.bfs.backend.domain.*;
 import com.bfs.backend.responseDomain.allCandidate;
 import com.bfs.backend.responseDomain.homeCandidate;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class AllCandidateDAOImpl extends AbstractHibernateDAO implements AllCandidateDAO {
@@ -31,7 +33,6 @@ public class AllCandidateDAOImpl extends AbstractHibernateDAO implements AllCand
         Root<EmailTemplate> emailRoot = ac.from(EmailTemplate.class);
         Root<InternalPersonnel> iRoot = ac.from(InternalPersonnel.class);
         Root<Position> positionRoot = ac.from(Position.class);
-        Root<User> uRoot = ac.from(User.class);
         ac.multiselect(
                 pRoot.get("ID"),
                 pRoot.get("FirstName"),
@@ -51,9 +52,10 @@ public class AllCandidateDAOImpl extends AbstractHibernateDAO implements AllCand
                 cb.equal(pRoot.get("RecruiterEmployeeID"), eRoot.get("ID")),
                 cb.equal(pRoot.get("EmailTemplateID"), emailRoot.get("ID")),
                 cb.equal(eRoot.get("internalPersonnel"), iRoot.get("ID")),
-                cb.equal(pRoot.get("position"), positionRoot.get("ID")));
+                cb.equal(pRoot.get("position"), positionRoot.get("ID"))
+        );
         List<allCandidate> list = session.createQuery(ac).getResultList();
-        return list;
+        return list.stream().distinct().collect(Collectors.toList());
     }
 
     @Override

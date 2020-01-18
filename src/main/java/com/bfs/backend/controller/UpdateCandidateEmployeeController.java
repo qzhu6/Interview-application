@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 public class UpdateCandidateEmployeeController {
     private AllCandidateService allCandidateService;
-    private candidateIdList candidateIdList;
+//    private candidateIdList candidateIdList;
 
     @Autowired
     public void setAllCandidatesService(AllCandidateService allCandidatesService) {
@@ -23,6 +23,9 @@ public class UpdateCandidateEmployeeController {
 
     @PostMapping("/AddToCandidate")
     public void UpdateCandidateEmployee( @RequestBody candidateIdList a){
+        for(Integer i: a.getCandidate()){
+            System.out.println(i);
+        }
         int EmployeeId = allCandidateService.FindEmployeeID(1);
         List<Integer> candidateId = a.getCandidate();
         allCandidateService.UpdateEmployeeID(EmployeeId, candidateId);
