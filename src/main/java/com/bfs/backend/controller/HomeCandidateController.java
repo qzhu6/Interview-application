@@ -18,7 +18,7 @@ public class HomeCandidateController {
     public void setHomeCandidatesService(HomeCandidateService homeCandidatesService) {
         this.homeCandidateService = homeCandidatesService;
     }
-
+//success
     @GetMapping("/home")
     public List<homeCandidate> getHomeCandidate(){
         return homeCandidateService.getHomeCandidate(1);

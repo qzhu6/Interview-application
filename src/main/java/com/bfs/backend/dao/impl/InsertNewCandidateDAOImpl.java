@@ -24,29 +24,6 @@ public class InsertNewCandidateDAOImpl extends AbstractHibernateDAO implements I
     @Override
     public void InsertNewCandidate(PotentialCandidate potentialCandidate){
         Session session = getCurrentSession();
-//        CriteriaBuilder builder = session.getCriteriaBuilder();
-//        CriteriaQuery<PotentialCandidate> query = builder.createQuery(PotentialCandidate.class);
-//        Root<PotentialCandidate> root = query.from(PotentialCandidate.class);
-//        session.merge(potentialCandidate);
-//        PotentialCandidate pc = potentialCandidate;
-//        PotentialCandidate pc = new PotentialCandidate();
-//        pc.setFirstName(potentialCandidate.getFirstName());
-//        pc.setMiddleName(potentialCandidate.getMiddleName());
-//        pc.setLastName(potentialCandidate.getLastName());
-//        pc.setEmail(potentialCandidate.getEmail());
-//        pc.setCellPhone(potentialCandidate.getCellPhone());
-//        pc.setResumeFileLocation(potentialCandidate.getResumeFileLocation());
-//        pc.setSendStatusID(1);
-//        pc.setRecruiterEmployeeID(potentialCandidate.getRecruiterEmployeeID());
-//        pc.setPositionID(potentialCandidate.getPositionID());
-//        pc.setComments(potentialCandidate.getComments());
-//        pc.setReachoutFlag(potentialCandidate.getReachoutFlag());
-//        pc.setActiveFlag(potentialCandidate.getActiveFlag());
-//        pc.setEmailTemplateID(potentialCandidate.getEmailTemplateID());
-//        pc.setCreateDate(potentialCandidate.getCreateDate());
-//        pc.setModifyDate(potentialCandidate.getModifyDate());
-//        pc.setCreateUser(potentialCandidate.getCreateUser());
-//        pc.setModifyUser(potentialCandidate.getModifyUser());
         session.persist(potentialCandidate);
     }
 

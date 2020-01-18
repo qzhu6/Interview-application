@@ -13,7 +13,7 @@ public class allCandidate implements java.io.Serializable{
     public allCandidate(int id, String firstName,  String lastName, String email, String cellPhone
             , String positionName, String emailTemplateName, String employeeFirstName, String employeeLastName,
                         Date createDate, String resource, String comment,  String resumeFileLocation, int createUser){
-        this.ID=id;
+        this.CandidateID=id;
         this.FirstName = firstName;
         this.LastName = lastName;
         this.Email = email;
@@ -31,7 +31,7 @@ public class allCandidate implements java.io.Serializable{
     }
 
     private int CreateUser;
-    private int ID;
+    private int CandidateID;
     private String FirstName;
     private String LastName;
     private String Email;
