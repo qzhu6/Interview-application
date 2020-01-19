@@ -2,8 +2,10 @@ package com.bfs.backend.controller;
 
 import com.bfs.backend.domain.EmailTemplate;
 import com.bfs.backend.responseDomain.Interview;
+import com.bfs.backend.responseDomain.myCandidate;
 import com.bfs.backend.service.EmailTemplateService;
 import com.bfs.backend.service.InterviewService;
+import com.bfs.backend.service.myCandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,7 @@ public class InterviewController {
     private String cuiBo;
     private InterviewService interviewService;
     private EmailTemplateService emailTemplateService;
+    private myCandidateService  myCandidateService;
 
     @Autowired
     public void setInterviewService(InterviewService interviewService){
@@ -27,6 +30,11 @@ public class InterviewController {
     @Autowired
     public void setEmailTemplateService(EmailTemplateService emailTemplateService){
         this.emailTemplateService = emailTemplateService;
+    }
+
+    @Autowired
+    public void setMyCandidateService(myCandidateService myCandidateService){
+        this.myCandidateService = myCandidateService;
     }
 
     @GetMapping("/Interview")
@@ -72,5 +80,10 @@ public class InterviewController {
     @PostMapping(value="/EmailTemplate")
     public void getNewEmailTemplate(@RequestBody EmailTemplate EmailTemplate){
         emailTemplateService.createEmailTemplate(EmailTemplate);
+    }
+
+    @PostMapping(value="/UpdateCandidate")
+    public void updateCandidate(@RequestBody List<myCandidate> listCandidate){
+        myCandidateService.updateCandidate(listCandidate);
     }
 }

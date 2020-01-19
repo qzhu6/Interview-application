@@ -9,6 +9,7 @@ import com.bfs.backend.service.HomeCandidateService;
 import com.bfs.backend.dao.PositionDAO;
 import com.bfs.backend.domain.*;
 import com.bfs.backend.responseDomain.Interview;
+import com.bfs.backend.responseDomain.myCandidate;
 import com.bfs.backend.service.*;
 import com.bfs.backend.config.HibernateConfig;
 import org.springframework.boot.SpringApplication;
@@ -29,7 +30,7 @@ import java.util.List;
 
 import java.util.stream.Collectors;
 
-@SpringBootApplication(exclude= HibernateJpaAutoConfiguration.class)
+@SpringBootApplication(exclude=HibernateJpaAutoConfiguration.class)
 public class AuthServerApplication {
 
 
@@ -40,6 +41,12 @@ public class AuthServerApplication {
     public static void main(String[] args) throws ParseException {
         SpringApplication.run(AuthServerApplication.class, args);
 //        ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
+<<<<<<< HEAD
+//        myCandidateService myCandidateService = context.getBean(com.bfs.backend.service.myCandidateService.class);
+//        List<myCandidate> listCandidate = new ArrayList<myCandidate>();
+//        listCandidate.add(new myCandidate(1, "Bo", "Cui", "cuibobo@gg.com", "BackEnd", null, new Date()));
+//        myCandidateService.updateCandidate(listCandidate);
+=======
 //        EmailService ac=context.getBean(EmailService.class);
 //        System.out.println(ac.getEmailByName("BackEnd2").getID());
 
@@ -79,6 +86,7 @@ public class AuthServerApplication {
 //    public static void main(String[] args) {
 ////        SpringApplication.run(AuthServerApplication.class, args);
 //        ApplicationContext context = new AnnotationConfigApplicationContext(HibernateConfig.class);
+>>>>>>> 66cec75f5ecd509d19605965016ec5c73c6551b6
 //        PositionService positionService = context.getBean(PositionService.class);
 //        InterviewTypeService interviewTypeService = context.getBean(InterviewTypeService.class);
 //        EmployeeService employeeService = context.getBean(EmployeeService.class);

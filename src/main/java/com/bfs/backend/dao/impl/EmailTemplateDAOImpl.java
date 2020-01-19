@@ -53,5 +53,18 @@ public class EmailTemplateDAOImpl extends AbstractHibernateDAO<EmailTemplate> im
         session.persist(newEmailTemplate);
     }
 
+    @Override
+    public EmailTemplate lookUpEmailTemplate(String EmailTemplateName){
+        Session session = getCurrentSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<EmailTemplate> cq = cb.createQuery(EmailTemplate.class);
+        Root<EmailTemplate> etRoot = cq.from(EmailTemplate.class);
+        cq.select(etRoot);
+        cq.where(
+                cb.equal(etRoot.get("EmailTemplateName"), EmailTemplateName)
+        );
+        return session.createQuery(cq).getSingleResult();
+    }
+
 
 }

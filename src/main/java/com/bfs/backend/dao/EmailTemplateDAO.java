@@ -8,4 +8,5 @@ public interface EmailTemplateDAO {
     List<String> listStringEmailTemplateName();
     List<EmailTemplate> listEmailTemplate();
     void createEmailTemplate(EmailTemplate emailTemplate);
+    EmailTemplate lookUpEmailTemplate(String EmailTemplateName);
 }
