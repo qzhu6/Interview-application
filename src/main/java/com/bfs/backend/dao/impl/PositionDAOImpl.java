@@ -21,6 +21,7 @@ public class PositionDAOImpl extends AbstractHibernateDAO<Position> implements P
 
     @Override
     public Position getPositionByName(String PositionName){
+        System.out.println(PositionName);
         Session session = getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<Position> cq = cb.createQuery(Position.class);
@@ -44,8 +45,6 @@ public class PositionDAOImpl extends AbstractHibernateDAO<Position> implements P
         List<String> positionStringList = new ArrayList<String>();
         for(Position x: positionList){
             positionStringList.add(x.getPositionName());
-//            System.out.println(x.getID());
-//            System.out.println(x.getPositionName());
         }
         return positionStringList;
     }

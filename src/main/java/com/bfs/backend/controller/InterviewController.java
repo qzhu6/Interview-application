@@ -39,7 +39,7 @@ public class InterviewController {
 
     @GetMapping("/Interview")
     public List<List<Interview>> getInterview(){
-        List<List<Interview>> listBoCui = interviewService.getListInterview("BackEnd");
+        List<List<Interview>> listBoCui = interviewService.getListInterview();
         return listBoCui;
     }
 
@@ -68,6 +68,7 @@ public class InterviewController {
 
     @PostMapping(value="/NewInterview")
     public void getNewInterview(@RequestBody Interview interview){
+        System.out.println(interview);
         interviewService.createNewInterview(interview);
     }
 

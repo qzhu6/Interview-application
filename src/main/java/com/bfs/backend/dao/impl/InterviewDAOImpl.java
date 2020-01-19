@@ -19,7 +19,7 @@ public class InterviewDAOImpl extends AbstractHibernateDAO<Interview> implements
         setClazz(Interview.class);
     }
 
-    public List<Interview> getInterview(String PositionName){
+    public List<Interview> getInterview(){
         Session session = getCurrentSession();
         List<Interview> list = null;
         CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -49,8 +49,7 @@ public class InterviewDAOImpl extends AbstractHibernateDAO<Interview> implements
                 cb.equal(ciRoot.get("InterviewTypeID"),itRoot.get("ID")),
                 cb.equal(ciRoot.get("InterviewerEmplID"),eRoot.get("ID")),
                 cb.equal(itRoot.get("PositionID"),pRoot.get("ID")),
-                cb.equal(eRoot.get("InternalPersonnelID"), ipRoot.get("ID")),
-                cb.equal(pRoot.get("PositionName"), PositionName));
+                cb.equal(eRoot.get("InternalPersonnelID"), ipRoot.get("ID")));
         list = session.createQuery(cq).getResultList();
         return list;
     }

@@ -211,6 +211,7 @@ public class PotentialCandidate implements Serializable {
         EmailTemplateID = emailTemplateID;
     }
 
+
     public PotentialCandidate(Integer ID, String FirstName, String MiddleName, String LastName, String Email, String CellPhone, String ResumeFileLocation, Integer SendStatusID, Integer RecruiterEmployeeID, Integer PositionID, String Comments, Boolean ReachoutFlag, Boolean ActiveFlag, Integer EmailTemplateID, Date CreateDate, Date ModifyDate, Integer CreateUser, Integer ModifyUser, String Resource) {
         this.ID = ID;
         this.FirstName = FirstName;

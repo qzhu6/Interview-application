@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface InterviewDAO {
-    List<Interview> getInterview(String PositionName);
+    List<Interview> getInterview();
     List<Interview> getInterviewByPositionName(String PositionName);
     void createInterview(Interview interview, PotentialCandidate potentialCandidate, Employee employee, InterviewType interviewType);
 }
