@@ -44,9 +44,10 @@ public class EmailTemplateDAOImpl extends AbstractHibernateDAO<EmailTemplate> im
     }
 
     @Override
-    public void createEmailTemplate(EmailTemplate emailTemplate){
+    public void createEmailTemplate(EmailTemplate emailTemplate,Integer UserID){
         Session session = getCurrentSession();
         EmailTemplate newEmailTemplate = new EmailTemplate();
+        newEmailTemplate.setCreateUser(UserID);
         newEmailTemplate.setEmailTemplateName(emailTemplate.getEmailTemplateName());
         newEmailTemplate.setEmailSubject(emailTemplate.getEmailSubject());
         newEmailTemplate.setEmailTemplateContent(emailTemplate.getEmailTemplateContent());

@@ -111,4 +111,25 @@ public class InterviewDAOImpl extends AbstractHibernateDAO<Interview> implements
         System.out.println(candidateInterview);
         session.persist(candidateInterview);
     }
+
+    @Override
+    public List<String> getEmployeeName(){
+        Session session = getCurrentSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery cq = cb.createQuery(InternalPersonnel.class);
+        Root<InternalPersonnel> ipRoot = cq.from(InternalPersonnel.class);
+        Root<Employee> eRoot = cq.from(Employee.class);
+        cq.multiselect(
+                ipRoot.get("FirstName"),
+                ipRoot.get("LastName")
+        );
+        cq.where(cb.equal(ipRoot.get("ID"), eRoot.get("InternalPersonnelID")));
+        List<InternalPersonnel> listPerson = session.createQuery(cq).getResultList();
+        List<String> listEmployeeName = new ArrayList<String>();
+        for(InternalPersonnel person: listPerson){
+            String fullName = person.getFirstName() + " " + person.getLastName();
+            listEmployeeName.add(fullName);
+        }
+        return listEmployeeName;
+    }
 }

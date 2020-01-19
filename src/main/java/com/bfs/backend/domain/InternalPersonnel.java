@@ -20,7 +20,13 @@ import lombok.Setter;
 @Entity
 @Table(name="InternalPersonnel", schema = "Person")
 public class InternalPersonnel implements Serializable{
+    public InternalPersonnel(){
 
+    }
+    public InternalPersonnel(String FirstName, String LastName) {
+        this.FirstName=FirstName;
+        this.LastName=LastName;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")

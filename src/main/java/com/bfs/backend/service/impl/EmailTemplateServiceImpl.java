@@ -32,7 +32,7 @@ public class EmailTemplateServiceImpl implements EmailTemplateService {
 
     @Override
     @Transactional
-    public void createEmailTemplate(EmailTemplate emailTemplate){
-        this.emailTemplateDAO.createEmailTemplate(emailTemplate);
+    public void createEmailTemplate(EmailTemplate emailTemplate,Integer UserID){
+        this.emailTemplateDAO.createEmailTemplate(emailTemplate, UserID);
     }
 }

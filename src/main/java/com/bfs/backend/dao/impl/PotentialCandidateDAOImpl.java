@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class PotentialCandidateDAOImpl extends AbstractHibernateDAO<PotentialCandidate> implements PotentialCandidateDAO {
@@ -31,5 +33,22 @@ public class PotentialCandidateDAOImpl extends AbstractHibernateDAO<PotentialCan
                 cb.equal(pcRoot.get("LastName"), LastName));
         PotentialCandidate potentialCandidate = session.createQuery(cq).getSingleResult();
         return potentialCandidate;
+    }
+    @Override
+    public List<String> getCandidateName(){
+        Session session = getCurrentSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<PotentialCandidate> cq = cb.createQuery(PotentialCandidate.class);
+        Root<PotentialCandidate> pcRoot = cq.from(PotentialCandidate.class);
+        cq.multiselect(
+                pcRoot.get("FirstName"),
+                pcRoot.get("LastName"));
+        List<PotentialCandidate> listCandidate = session.createQuery(cq).getResultList();
+        List<String> listCandidateName = new ArrayList<String>();
+        for(PotentialCandidate candidate: listCandidate){
+            String fullName = candidate.getFirstName() +" " +candidate.getLastName();
+            listCandidateName.add(fullName);
+        }
+        return listCandidateName;
     }
 }

@@ -10,8 +10,11 @@ import java.util.List;
 import java.util.Set;
 
 public interface InterviewService {
-    List<List<Interview>> getListInterview();
+    List<List<Interview>> getListInterview(String PositionName);
     List<Interview> getListInterviewByPositionName(String PositionName);
     void createNewInterview(Interview interview);
     List<String> getStringListPositionName();
+    List<String> getEmployeeName();
+    List<String> getCandidateName();
+
 }
