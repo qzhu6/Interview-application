@@ -4,6 +4,10 @@ import com.bfs.backend.responseDomain.myCandidate;
 
 import java.util.List;
 
-public interface MyCandidateService {
+public interface myCandidateService {
     List<myCandidate> getMyCandidate(int userID);
+    void updateCandidate(List<myCandidate> listCandidate);
+
+
+
 }

@@ -7,6 +7,6 @@ import java.util.List;
 public interface EmailTemplateDAO {
     List<String> listStringEmailTemplateName();
     List<EmailTemplate> listEmailTemplate();
-    void createEmailTemplate(EmailTemplate emailTemplate);
+    void createEmailTemplate(EmailTemplate emailTemplate, Integer UserID);
     EmailTemplate lookUpEmailTemplate(String EmailTemplateName);
 }

@@ -2,7 +2,9 @@ package com.bfs.backend.controller;
 
 import com.bfs.backend.domain.EmailTemplate;
 import com.bfs.backend.responseDomain.Interview;
+import com.bfs.backend.responseDomain.PositionName;
 import com.bfs.backend.responseDomain.myCandidate;
+import com.bfs.backend.responseDomain.myCandidateList;
 import com.bfs.backend.service.EmailTemplateService;
 import com.bfs.backend.service.InterviewService;
 import com.bfs.backend.service.myCandidateService;
@@ -37,11 +39,17 @@ public class InterviewController {
         this.myCandidateService = myCandidateService;
     }
 
-    @GetMapping("/Interview")
-    public List<List<Interview>> getInterview(){
-        List<List<Interview>> listBoCui = interviewService.getListInterview();
-        return listBoCui;
-    }
+//    @GetMapping("/Interview")
+//    public List<List<Interview>> getInterview(){
+//        List<List<Interview>> listBoCui = interviewService.getListInterview();
+//        return listBoCui;
+//    }
+   @PostMapping("/Interview")
+    public List<List<Interview>> getInterview(@RequestBody PositionName pn){
+        System.out.println(pn.getPositionName());
+    List<List<Interview>> listBoCui = interviewService.getListInterview(pn.getPositionName());
+    return listBoCui;
+}
 
     @GetMapping("/ListPosition")
     public List<String> getListPosition(){
@@ -58,7 +66,6 @@ public class InterviewController {
         List<String> listEmailTemplateName = emailTemplateService.getEmailTemplateName();
         return listEmailTemplateName;
     }
-
 
     @GetMapping(value="/ListEmailTemplate")
     public List<EmailTemplate> getEmailTemplate(){
@@ -79,11 +86,23 @@ public class InterviewController {
 
     @PostMapping(value="/EmailTemplate")
     public void getNewEmailTemplate(@RequestBody EmailTemplate EmailTemplate){
-        emailTemplateService.createEmailTemplate(EmailTemplate);
+        emailTemplateService.createEmailTemplate(EmailTemplate,1);
     }
 
     @PostMapping(value="/UpdateCandidate")
-    public void updateCandidate(@RequestBody List<myCandidate> listCandidate){
-        myCandidateService.updateCandidate(listCandidate);
+    public void updateCandidate(@RequestBody myCandidateList listCandidate){
+
+        myCandidateService.updateCandidate(listCandidate.getCandidateList());
+    }
+
+    @GetMapping(value="/EmployeeName")
+    public List<String> getEmployeeName(){
+        List<String> listEmployeeName = interviewService.getEmployeeName();
+        return listEmployeeName;
+    }
+    @GetMapping(value="/CandidateName")
+    public List<String> getCandidateName(){
+        List<String> listCandidateName = interviewService.getCandidateName();
+        return listCandidateName;
     }
 }

@@ -13,4 +13,5 @@ public interface InterviewDAO {
     List<Interview> getInterview();
     List<Interview> getInterviewByPositionName(String PositionName);
     void createInterview(Interview interview, PotentialCandidate potentialCandidate, Employee employee, InterviewType interviewType);
+    List<String> getEmployeeName();
 }

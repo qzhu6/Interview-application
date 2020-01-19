@@ -1,7 +1,7 @@
 package com.bfs.backend.dao.impl;
 
 import com.bfs.backend.dao.AbstractHibernateDAO;
-import com.bfs.backend.dao.MyCandidateDAO;
+import com.bfs.backend.dao.myCandidateDAO;
 import com.bfs.backend.domain.*;
 import com.bfs.backend.responseDomain.myCandidate;
 import org.hibernate.Session;
@@ -13,10 +13,10 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
-public class MyCandidateDAOImpl extends AbstractHibernateDAO implements MyCandidateDAO {
+public class myCandidateDAOImpl extends AbstractHibernateDAO implements myCandidateDAO {
 
-    public MyCandidateDAOImpl() {
-        setClazz(MyCandidateDAO.class);
+    public myCandidateDAOImpl() {
+        setClazz(myCandidateDAO.class);
     }
 
     @Override
@@ -48,4 +48,18 @@ public class MyCandidateDAOImpl extends AbstractHibernateDAO implements MyCandid
         List<myCandidate> list = session.createQuery(ac).getResultList();
         return list;
     }
+    @Override
+    public void updateCandidate(myCandidate candidate, EmailTemplate emailTemplate){
+        Session session = getCurrentSession();
+        PotentialCandidate potentialCandidate = session.get(PotentialCandidate.class, candidate.getID());
+        potentialCandidate.setReachoutFlag(true);
+        potentialCandidate.setSendStatusID(3);
+        potentialCandidate.setEmailTemplateID(emailTemplate.getID());
+        potentialCandidate.setReachoutFlag(true);
+        session.merge(potentialCandidate);
+    }
+
+
+
+
 }

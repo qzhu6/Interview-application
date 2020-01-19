@@ -7,5 +7,5 @@ import java.util.List;
 public interface EmailTemplateService {
     List<String> getEmailTemplateName();
     List<EmailTemplate> getEmailTemplateList();
-    void createEmailTemplate(EmailTemplate emailTemplate);
+    void createEmailTemplate(EmailTemplate emailTemplate,Integer UserID);
 }

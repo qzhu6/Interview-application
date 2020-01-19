@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class InterviewTypeServiceImpl implements InterviewTypeService {
     private InterviewTypeDAO interviewTypeDAO;
@@ -22,6 +24,8 @@ public class InterviewTypeServiceImpl implements InterviewTypeService {
     public InterviewType getInterviewType(Position position, Integer Sequence){
         return this.interviewTypeDAO.getInterviewType(position, Sequence);
     }
+
+
 
 
 }

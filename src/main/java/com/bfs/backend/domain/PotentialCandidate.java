@@ -17,6 +17,10 @@ import lombok.Setter;
 @Entity
 @Table(name="PotentialCandidate", schema = "Recruiting")
 public class PotentialCandidate implements Serializable {
+    public PotentialCandidate(String FirstName, String LastName) {
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID")
