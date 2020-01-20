@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletContext;
 import java.util.List;
 
 @RestController
 public class AllCandidateController {
     private AllCandidateService allCandidateService;
+    @Autowired
+    private ServletContext servletContext;
 
     @Autowired
     public void setAllCandidatesService(AllCandidateService allCandidatesService) {
@@ -20,7 +23,9 @@ public class AllCandidateController {
     }
 
     @GetMapping("/AllCandidate")
+
     public List<allCandidate> getAllCandidate(){
-        return allCandidateService.getAllCandidate(1);
+        Integer userID = (Integer)servletContext.getAttribute("userID");
+        return allCandidateService.getAllCandidate(userID);
     }
 }

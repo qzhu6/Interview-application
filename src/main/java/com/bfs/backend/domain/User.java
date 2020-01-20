@@ -32,7 +32,7 @@ public class User implements Serializable{
     private String UserName;
 
     @Column(name="Password")
-    private int Password;
+    private String Password;
 
     @Column(name="InternalPersonnelID")
     private Integer InternalPersonnelID;
@@ -47,8 +47,7 @@ public class User implements Serializable{
     @Column(name="ModifyDate")
     private Date ModifyDate;
 
-//    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
-//    private InternalPersonnel internalPersonnel;
+
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<UserRole> userRole = new HashSet<UserRole>();
@@ -69,11 +68,11 @@ public class User implements Serializable{
         UserName = userName;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return Password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         Password = password;
     }
 

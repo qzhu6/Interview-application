@@ -56,6 +56,7 @@ public class InterviewDAOImpl extends AbstractHibernateDAO<Interview> implements
 
     @Override
     public List<Interview> getInterviewByPositionName(String PositionName){
+        System.out.println(PositionName);
         Session session = getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<Interview> cq = cb.createQuery(Interview.class);
@@ -81,20 +82,30 @@ public class InterviewDAOImpl extends AbstractHibernateDAO<Interview> implements
                 itRoot.get("Sequence"),
                 ciRoot.get("InterviewStatus"));
         cq.where(
-                cb.equal(pRoot.get("PositionName"), PositionName)
-                ,cb.equal(pRoot.get("ID"), itRoot.get("PositionID"))
+                cb.equal(pRoot.get("ID"), itRoot.get("PositionID"))
                 ,cb.equal(itRoot.get("ID"), ciRoot.get("InterviewTypeID"))
                 ,cb.equal(ciRoot.get("PotentialCandidateID"), pcRoot.get("ID"))
                 ,cb.equal(ciRoot.get("InterviewerEmplID"), eRoot.get("ID"))
-                ,cb.equal(eRoot.get("InternalPersonnelID"), ipRoot.get("ID"))
+                ,cb.equal(eRoot.get("InternalPersonnelID"), ipRoot.get("ID")),
+                cb.equal(pRoot.get("PositionName"), PositionName)
+
         );
         List<Interview> listInterview = session.createQuery(cq).getResultList();
-//        Set<Interview> setInterview = new HashSet<Interview>(listInterview);
+        for(Interview i:listInterview){
+            System.out.println(i.toString());
+        }
         return listInterview;
     }
 
-//    public void insertInterview(Date InterviewStartDateTime, double InterviewDuration, String PositionName, String CandidateFirstName, String CandidateLastName, double OverallRating, String InterviewerFirstName, String InterviewerMiddleName, String InterviewerLastName, String Comments, String ResumeFileLocation, int Sequence, String InterviewStatus){
-//    }
+    @Override
+    public void updateInterviewStatus(Interview interview){
+        Session session = getCurrentSession();
+        CandidateInterview candidateInterview = session.get(CandidateInterview.class, interview.getID());
+        candidateInterview.setInterviewStatus(interview.getInterviewStatus());
+        session.merge(candidateInterview);
+    }
+
+
 
     @Override
     public void createInterview(Interview interview, PotentialCandidate potentialCandidate, Employee employee, InterviewType interviewType){
