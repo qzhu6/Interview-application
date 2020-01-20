@@ -1,8 +1,9 @@
 package com.bfs.backend.responseDomain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class homeCandidate implements java.io.Serializable {
+public class homeCandidate implements Serializable {
     public homeCandidate(){ }
     public homeCandidate(Date interviewStartDateTime, double interviewDuration, String firstName, String lastName, String interviewerFirstName, String interviewerLastName,
                          String cellPhone , String positionName,  String resumeFileLocation){

@@ -1,9 +1,8 @@
-//package com.bfs.backend.dao;
-//
-//
-//import com.bfs.backend.domain.User1;
-//
-//public interface UserDAO {
-//    User1 getUserByNameOrEmail(String str, String nameOrEmail);
-//
-//}
+package com.bfs.backend.dao;
+
+import com.bfs.backend.responseDomain.userInformation;
+
+public interface UserDAO {
+    userInformation getUserByName(String userName);
+
+}

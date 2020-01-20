@@ -45,14 +45,14 @@ public class InsertNewCandidateServiceImpl implements InsertNewCandidateService 
 
     @Transactional
     @Override
-    public void InsertNewCandidate(allCandidate allCandidate, int userId){
+    public void InsertNewCandidate(allCandidate allCandidate, int userId, String resumePath){
         PotentialCandidate pc = new PotentialCandidate();
         pc.setFirstName(allCandidate.getFirstName());
         pc.setMiddleName(" ");
         pc.setLastName(allCandidate.getLastName());
         pc.setEmail(allCandidate.getEmail());
         pc.setCellPhone(allCandidate.getCellPhone());
-        pc.setResumeFileLocation(allCandidate.getResumeFileLocation());
+        pc.setResumeFileLocation(resumePath);
         pc.setSendStatusID(1);
         pc.setActiveFlag(true);
         pc.setRecruiterEmployeeID(employeeService.getEmployeeByUserID(userId).getID());

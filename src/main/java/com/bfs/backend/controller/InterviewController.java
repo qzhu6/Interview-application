@@ -11,6 +11,7 @@ import com.bfs.backend.service.myCandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletContext;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -23,6 +24,9 @@ public class InterviewController {
     private InterviewService interviewService;
     private EmailTemplateService emailTemplateService;
     private myCandidateService  myCandidateService;
+
+    @Autowired
+    private ServletContext servletContext;
 
     @Autowired
     public void setInterviewService(InterviewService interviewService){
@@ -39,14 +43,8 @@ public class InterviewController {
         this.myCandidateService = myCandidateService;
     }
 
-//    @GetMapping("/Interview")
-//    public List<List<Interview>> getInterview(){
-//        List<List<Interview>> listBoCui = interviewService.getListInterview();
-//        return listBoCui;
-//    }
    @PostMapping("/Interview")
     public List<List<Interview>> getInterview(@RequestBody PositionName pn){
-        System.out.println(pn.getPositionName());
     List<List<Interview>> listBoCui = interviewService.getListInterview(pn.getPositionName());
     return listBoCui;
 }
@@ -56,10 +54,10 @@ public class InterviewController {
         return interviewService.getStringListPositionName();
     }
 
-    @GetMapping("/ListInterviewByName")
-    public List<Interview> getListInterviewByName(){
-        return interviewService.getListInterviewByPositionName(cuiBo);
-    }
+//    @GetMapping("/ListInterviewByName")
+//    public List<Interview> getListInterviewByName(){
+//        return interviewService.getListInterviewByPositionName(cuiBo);
+//    }
 
     @GetMapping(value="/ListEmailTemplateName")
     public List<String> getEmailTemplateName(){
@@ -75,7 +73,6 @@ public class InterviewController {
 
     @PostMapping(value="/NewInterview")
     public void getNewInterview(@RequestBody Interview interview){
-        System.out.println(interview);
         interviewService.createNewInterview(interview);
     }
 
@@ -86,12 +83,13 @@ public class InterviewController {
 
     @PostMapping(value="/EmailTemplate")
     public void getNewEmailTemplate(@RequestBody EmailTemplate EmailTemplate){
-        emailTemplateService.createEmailTemplate(EmailTemplate,1);
+        Integer userID = (Integer)servletContext.getAttribute("userID");
+        emailTemplateService.createEmailTemplate(EmailTemplate,userID);
     }
 
     @PostMapping(value="/UpdateCandidate")
     public void updateCandidate(@RequestBody myCandidateList listCandidate){
-
+        System.out.println(listCandidate);
         myCandidateService.updateCandidate(listCandidate.getCandidateList());
     }
 
@@ -104,5 +102,10 @@ public class InterviewController {
     public List<String> getCandidateName(){
         List<String> listCandidateName = interviewService.getCandidateName();
         return listCandidateName;
+    }
+
+    @PostMapping(value="/UpdateInterview")
+    public void updateInterview(@RequestBody Interview interview){
+        interviewService.updateInterview(interview);
     }
 }

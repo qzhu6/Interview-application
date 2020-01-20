@@ -16,5 +16,6 @@ public interface InterviewService {
     List<String> getStringListPositionName();
     List<String> getEmployeeName();
     List<String> getCandidateName();
+    void updateInterview(Interview interview);
 
 }

@@ -51,34 +51,11 @@ public class InterviewServiceImpl implements InterviewService {
         this.interviewDao = interviewDao;
     }
 
-//    @Transactional
-//    @Override
-//    public List<List<Interview>> getListInterview(){
-//        List<Interview> interview = interviewDao.getInterview();
-//        Comparator<Interview> compareByName = Comparator.comparing(Interview::getIntervieweeFullName).thenComparing(Interview::getPositionName).thenComparing(Interview::getSequence);
-//        List<Interview> sortedInterview = interview.stream().sorted(compareByName).collect(Collectors.toList());
-//        List<List<Interview>> listBoCui = new ArrayList<List<Interview>>();
-//        List<Interview> listNoBoCui = new ArrayList<Interview>();
-//        for (int i = 0; i < sortedInterview.size(); i++) {
-//            if (i == 0) {
-//                listNoBoCui.add(sortedInterview.get(i));
-//            } else if (i != 0) {
-//                if (!sortedInterview.get(i).getIntervieweeFullName().equals(sortedInterview.get(i - 1).getIntervieweeFullName()) && !sortedInterview.get(i).getPositionName().equals(sortedInterview.get(i - 1).getPositionName())) {
-//                    listBoCui.add(listNoBoCui);
-//                    listNoBoCui = new ArrayList<Interview>();
-//                    listNoBoCui.add(sortedInterview.get(i));
-//                } else {
-//                    listNoBoCui.add(sortedInterview.get(i));
-//                }
-//            }
-//        }
-//        listBoCui.add(listNoBoCui);
-//        return listBoCui;
-//    }
 @Transactional
 @Override
 public List<List<Interview>> getListInterview(String PositionName){
     List<Interview> interview = interviewDao.getInterviewByPositionName(PositionName);
+
     Comparator<Interview> compareByName = Comparator.comparing(Interview::getIntervieweeFullName).thenComparing(Interview::getPositionName).thenComparing(Interview::getSequence);
     List<Interview> sortedInterview = interview.stream().sorted(compareByName).collect(Collectors.toList());
     List<List<Interview>> listBoCui = new ArrayList<List<Interview>>();
@@ -87,7 +64,7 @@ public List<List<Interview>> getListInterview(String PositionName){
         if (i == 0) {
             listNoBoCui.add(sortedInterview.get(i));
         } else if (i != 0) {
-            if (!sortedInterview.get(i).getIntervieweeFullName().equals(sortedInterview.get(i - 1).getIntervieweeFullName()) && !sortedInterview.get(i).getPositionName().equals(sortedInterview.get(i - 1).getPositionName())) {
+            if (!sortedInterview.get(i).getIntervieweeFullName().equals(sortedInterview.get(i-1).getIntervieweeFullName())) {
                 listBoCui.add(listNoBoCui);
                 listNoBoCui = new ArrayList<Interview>();
                 listNoBoCui.add(sortedInterview.get(i));
@@ -104,6 +81,7 @@ public List<List<Interview>> getListInterview(String PositionName){
     public List<Interview> getListInterviewByPositionName(String PositionName){
         return this.interviewDao.getInterviewByPositionName(PositionName);
     }
+
 
     @Transactional
     @Override
@@ -130,6 +108,12 @@ public List<List<Interview>> getListInterview(String PositionName){
     @Transactional
     public List<String> getCandidateName(){
         return potentialCandidateDAO.getCandidateName();
+    }
+
+    @Override
+    @Transactional
+    public void updateInterview(Interview interview){
+        interviewDao.updateInterviewStatus(interview);
     }
 
 }

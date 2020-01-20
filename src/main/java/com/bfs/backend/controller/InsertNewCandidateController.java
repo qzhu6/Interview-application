@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletContext;
 import java.util.List;
 
 @RestController
 public class InsertNewCandidateController {
     private InsertNewCandidateService insertNewCandidateService;
+    @Autowired
+    private ServletContext servletContext;
 
     @Autowired
     public void setInsertNewCandidateService(InsertNewCandidateService insertNewCandidateService) {
@@ -24,8 +27,10 @@ public class InsertNewCandidateController {
 
     @PostMapping("/NewCandidate")
     public void InsertCandidate(@RequestBody allCandidate a){
-        System.out.println(a.getFirstName());
-        insertNewCandidateService.InsertNewCandidate(a, 1);
+        Integer userID = (Integer)servletContext.getAttribute("userID");
+        String resumePath =(String)servletContext.getAttribute("file");
+        System.out.println(resumePath);
+        insertNewCandidateService.InsertNewCandidate(a, userID,resumePath);
     }
 }
 

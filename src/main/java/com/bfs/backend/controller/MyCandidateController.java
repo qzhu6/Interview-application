@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletContext;
 import java.util.List;
 
 @RestController
 public class MyCandidateController {
     private com.bfs.backend.service.myCandidateService myCandidateService;
+    @Autowired
+    private ServletContext servletContext;
 
     @Autowired
     public void setMyCandidatesService(myCandidateService myCandidatesService) {
@@ -19,6 +22,7 @@ public class MyCandidateController {
 
     @GetMapping("/MyCandidate")
     public List<myCandidate> getMyCandidate(){
-        return myCandidateService.getMyCandidate(1);
+        Integer userID = (Integer)servletContext.getAttribute("userID");
+        return myCandidateService.getMyCandidate(userID);
     }
 }
