@@ -45,14 +45,7 @@ public class myCandidateServiceImpl implements myCandidateService {
         return myCandidateDAO.getMyCandidate(userID);
     }
 
-//    @Override
-//    @Transactional
-//    public void updateCandidate(List<myCandidate> listCandidate){
-//        for(myCandidate candidate: listCandidate){
-//            EmailTemplate emailTemplate = emailTemplateDAO.lookUpEmailTemplate(candidate.getEmailTemplateName());
-//            myCandidateDAO.updateCandidate(candidate, emailTemplate);
-//        }
-//    }
+
     @Override
     @Transactional
     public void updateCandidate(List<myCandidate> listCandidate){
