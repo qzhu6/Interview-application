@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface PositionService {
     Position getPositionObject(String PositionName);
-    List<String> getStringListPositionName();
 }

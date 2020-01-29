@@ -76,11 +76,7 @@ public List<List<Interview>> getListInterview(String PositionName){
     listBoCui.add(listNoBoCui);
     return listBoCui;
 }
-    @Transactional
-    @Override
-    public List<Interview> getListInterviewByPositionName(String PositionName){
-        return this.interviewDao.getInterviewByPositionName(PositionName);
-    }
+
 
 
     @Transactional

@@ -7,7 +7,4 @@ import java.util.List;
 public interface myCandidateService {
     List<myCandidate> getMyCandidate(int userID);
     void updateCandidate(List<myCandidate> listCandidate);
-
-
-
 }

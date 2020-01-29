@@ -21,6 +21,8 @@ public class HomeCandidateController {
     public void setHomeCandidatesService(HomeCandidateService homeCandidatesService) {
         this.homeCandidateService = homeCandidatesService;
     }
+
+
     @GetMapping("/home")
     public List<homeCandidate> getHomeCandidate(){
         Integer userID = (Integer)servletContext.getAttribute("userID");

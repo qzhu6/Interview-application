@@ -24,9 +24,5 @@ public class PositionServiceImpl implements PositionService {
         return positionDAO.getPositionByName(PositionName);
     }
 
-    @Transactional
-    @Override
-    public List<String> getStringListPositionName(){
-        return positionDAO.listPosition();
-    }
+
 }

@@ -54,10 +54,7 @@ public class InterviewController {
         return interviewService.getStringListPositionName();
     }
 
-//    @GetMapping("/ListInterviewByName")
-//    public List<Interview> getListInterviewByName(){
-//        return interviewService.getListInterviewByPositionName(cuiBo);
-//    }
+
 
     @GetMapping(value="/ListEmailTemplateName")
     public List<String> getEmailTemplateName(){

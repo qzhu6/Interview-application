@@ -6,6 +6,8 @@ import com.bfs.backend.dao.UserDAO;
 import com.bfs.backend.domain.User;
 import com.bfs.backend.responseDomain.userInformation;
 import org.hibernate.Session;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -16,13 +18,13 @@ import java.util.List;
 @Repository
 public class UserDAOImpl extends AbstractHibernateDAO implements UserDAO {
 
-
+    private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     public UserDAOImpl() {
         setClazz(userInformation.class);
     }
 
     @Override
-    public userInformation getUserByName(String userName){
+    public userInformation findByUsername(String userName){
         Session session = getCurrentSession();
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<userInformation> cq = cb.createQuery(userInformation.class);
@@ -31,7 +33,6 @@ public class UserDAOImpl extends AbstractHibernateDAO implements UserDAO {
                 uRoot.get("UserName"),
                 uRoot.get("Password"),
                 uRoot.get("ID")
-
         );
         cq.where(
                 cb.equal(uRoot.get("UserName"), userName)
@@ -41,6 +42,8 @@ public class UserDAOImpl extends AbstractHibernateDAO implements UserDAO {
             return null;
         }
         else{
+            userInformation ui=userInformationList.get(0);
+            ui.setPassword(passwordEncoder.encode(ui.getPassword()));
             return userInformationList.get(0);
         }
 
